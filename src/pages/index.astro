@@ -1,17 +1,404 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site, whatsappLink } from "../config/site";
 
+const navItems = [
+  { label: "Início", href: "#inicio" },
+  { label: "Sobre", href: "#sobre" },
+  { label: "Psicoterapia", href: "#servicos" },
+  { label: "Avaliação Psicológica", href: "#servicos" },
+  { label: "Atendimento Online", href: "#servicos" },
+  { label: "Contato", href: "#contato" },
+];
+
+const services = [
+  {
+    title: "Psicoterapia",
+    icon: "💬",
+    color: "bg-[#338d83]",
+    description:
+      "Processo terapêutico individual para compreender emoções, pensamentos e comportamentos, fortalecendo recursos internos.",
+  },
+  {
+    title: "Avaliação Psicológica",
+    icon: "📋",
+    color: "bg-[#bfa5ed]",
+    description:
+      "Avaliação técnica e cuidadosa para diferentes demandas, com instrumentos adequados e devolutivas claras.",
+  },
+  {
+    title: "Atendimento Online",
+    icon: "💻",
+    color: "bg-[#f4b3e1]",
+    description:
+      "Atendimento mediado por tecnologia, com acolhimento, sigilo e avaliação da adequação para cada caso.",
+  },
+];
+
+const steps = [
+  {
+    number: "1",
+    title: "Agende sua conversa",
+    text: "Entre em contato pelo WhatsApp e escolha o melhor horário disponível.",
+    icon: "📅",
+  },
+  {
+    number: "2",
+    title: "Conversa inicial",
+    text: "Vamos compreender sua demanda e avaliar a melhor forma de cuidado.",
+    icon: "💬",
+  },
+  {
+    number: "3",
+    title: "Inicie seu processo",
+    text: "Juntos, construímos um plano de cuidado adequado aos seus objetivos.",
+    icon: "🌿",
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-[#e8ded6]/80 bg-[#fbf8f5]/90 backdrop-blur-xl">
+    <div class="container-elus flex min-h-20 items-center justify-between gap-6">
+      <a href="#inicio" class="flex items-center gap-3" aria-label="Elus Psicologia">
+        <img
+          src="/logo-elus.png"
+          alt="Elus Psicologia"
+          class="h-14 w-auto"
+          loading="eager"
+        />
+      </a>
+
+      <nav class="hidden items-center gap-7 text-sm text-[#4e5c59] lg:flex">
+        {navItems.map((item) => (
+          <a href={item.href} class="transition hover:text-[#338d83]">
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden rounded-full bg-[#338d83] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-[#338d83]/20 transition hover:bg-[#185c58] md:inline-flex"
+      >
+        Agendar conversa
+      </a>
+    </div>
+  </header>
+
+  <main id="inicio" class="pt-20">
+    <section class="container-elus grid min-h-[calc(100vh-80px)] items-center gap-12 py-14 lg:grid-cols-[0.95fr_1.05fr] lg:py-20">
+      <div>
+        <p class="mb-5 inline-flex rounded-full border border-[#e8ded6] bg-white px-4 py-2 text-sm font-medium text-[#338d83]">
+          Psicologia com acolhimento e clareza
+        </p>
+
+        <h1 class="max-w-2xl text-5xl font-normal leading-[1.05] tracking-tight text-[#174442] md:text-7xl">
+          Cuidado psicológico com escuta, ética e clareza<span class="text-[#f4b3e1]">.</span>
+        </h1>
+
+        <div class="mt-5 h-3 w-32 rounded-full border-b-2 border-[#f4b3e1]"></div>
+
+        <p class="mt-8 max-w-xl text-base leading-8 text-[#6f7774] md:text-lg">
+          Psicoterapia, avaliação psicológica e atendimento online para apoiar você em seus desafios,
+          ampliar recursos internos e promover mais bem-estar e qualidade de vida.
+        </p>
+
+        <div class="mt-9 flex flex-col gap-4 sm:flex-row">
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-full bg-[#338d83] px-7 py-4 text-center text-sm font-semibold text-white shadow-lg shadow-[#338d83]/20 transition hover:bg-[#185c58]"
+          >
+            Agendar pelo WhatsApp
+          </a>
+
+          <a
+            href="#sobre"
+            class="rounded-full border border-[#338d83]/50 bg-white px-7 py-4 text-center text-sm font-semibold text-[#338d83] transition hover:bg-[#f3eeea]"
+          >
+            Conhecer a profissional →
+          </a>
+        </div>
+
+        <div class="mt-12 grid gap-5 text-sm text-[#5d6865] sm:grid-cols-3">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl text-[#338d83]">♢</span>
+            <span>Ética e sigilo profissional</span>
+          </div>
+
+          <div class="flex items-center gap-3 border-[#e8ded6] sm:border-l sm:pl-5">
+            <span class="text-2xl text-[#338d83]">♡</span>
+            <span>Atendimento humanizado</span>
+          </div>
+
+          <div class="flex items-center gap-3 border-[#e8ded6] sm:border-l sm:pl-5">
+            <span class="text-2xl text-[#338d83]">✦</span>
+            <span>Responsabilidade técnica</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="absolute -left-8 top-24 h-20 w-20 rounded-full bg-[#bfa5ed]/75"></div>
+        <div class="absolute -right-8 top-20 h-72 w-72 rounded-full border border-[#338d83]/35"></div>
+        <div class="dot-pattern absolute -right-8 bottom-14 h-40 w-40 opacity-70"></div>
+
+        <div class="hero-visual soft-shadow relative overflow-hidden rounded-[3rem] p-7">
+          <div class="relative min-h-[560px] overflow-hidden rounded-[2.5rem] bg-[#f3eeea]">
+            <div class="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-[#ccb8a4]/35 to-transparent"></div>
+
+            <div class="absolute left-1/2 top-16 h-40 w-32 -translate-x-1/2 rounded-xl border-[10px] border-[#caa98b] bg-white p-4 shadow-lg">
+              <div class="h-full rounded-lg bg-[#f6eee8]">
+                <div class="absolute left-8 top-14 h-16 w-12 rounded-full bg-[#ccb8a4]/70"></div>
+                <div class="absolute right-9 top-12 h-11 w-11 rounded-full bg-[#174442]"></div>
+                <div class="absolute bottom-10 left-1/2 h-20 w-[1px] -translate-x-1/2 bg-[#338d83]"></div>
+              </div>
+            </div>
+
+            <div class="absolute bottom-20 left-[18%] h-72 w-64 rounded-[42%_42%_18%_18%] bg-white shadow-2xl">
+              <div class="absolute -top-8 left-1/2 h-16 w-40 -translate-x-1/2 rounded-t-full bg-white"></div>
+              <div class="absolute bottom-8 left-1/2 h-14 w-32 -translate-x-1/2 rounded-2xl bg-[#cce0db]"></div>
+            </div>
+
+            <div class="absolute bottom-14 left-12 h-28 w-28 rounded-full bg-[#b98f65]/50"></div>
+            <div class="absolute bottom-20 left-20 h-4 w-36 rounded-full bg-[#9a7b6c]/40"></div>
+
+            <div class="absolute bottom-18 right-14 h-72 w-28 rounded-full bg-[#e1d2c4]"></div>
+            <div class="absolute bottom-48 right-20 h-36 w-20 -rotate-12 rounded-full bg-[#2d6f4f]"></div>
+            <div class="absolute bottom-52 right-32 h-32 w-16 rotate-12 rounded-full bg-[#2d6f4f]"></div>
+            <div class="absolute bottom-36 right-6 h-40 w-16 rotate-[28deg] rounded-full bg-[#2d6f4f]"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="border-y border-[#e8ded6] bg-white py-20">
+      <div class="container-elus">
+        <div class="mx-auto max-w-xl text-center">
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">
+            Como posso ajudar
+          </p>
+
+          <h2 class="mt-4 text-4xl font-normal text-[#174442] md:text-5xl">
+            Serviços
+          </h2>
+
+          <div class="mx-auto mt-4 h-1 w-16 rounded-full bg-[#f4b3e1]"></div>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          {services.map((service) => (
+            <article class="card-border soft-shadow rounded-[1.75rem] bg-white p-8 text-center transition hover:-translate-y-1">
+              <div class={`mx-auto flex h-20 w-20 items-center justify-center rounded-full ${service.color} text-3xl text-white`}>
+                {service.icon}
+              </div>
+
+              <h3 class="mt-7 text-2xl font-normal text-[#174442]">
+                {service.title}
+              </h3>
+
+              <p class="mt-4 text-sm leading-7 text-[#6f7774]">
+                {service.description}
+              </p>
+
+              <a href="#contato" class="mt-7 inline-flex text-sm font-semibold text-[#338d83]">
+                Saiba mais →
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="bg-[#fbf8f5] py-20">
+      <div class="container-elus grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+        <div>
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">
+            Sobre
+          </p>
+
+          <h2 class="mt-4 text-4xl font-normal leading-tight text-[#174442] md:text-5xl">
+            Sobre a prática
+          </h2>
+
+          <div class="mt-4 h-1 w-16 rounded-full bg-[#f4b3e1]"></div>
+
+          <p class="mt-7 text-base leading-8 text-[#6f7774]">
+            A Elus Psicologia nasce do desejo de oferecer um espaço seguro, ético e acolhedor,
+            onde cada pessoa possa ser ouvida em sua singularidade.
+          </p>
+
+          <p class="mt-4 text-base leading-8 text-[#6f7774]">
+            Acreditamos no potencial de desenvolvimento humano e na construção de caminhos
+            mais leves e conscientes.
+          </p>
+
+          <div class="mt-8 space-y-5">
+            <div class="flex gap-4">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#d7ebe8] text-xl">
+                ♡
+              </span>
+              <div>
+                <h3 class="font-semibold text-[#174442]">Acolhimento genuíno</h3>
+                <p class="mt-1 text-sm text-[#6f7774]">
+                  Escuta ativa, empatia e respeito à sua história.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e8dbce] text-xl">
+                ⚖
+              </span>
+              <div>
+                <h3 class="font-semibold text-[#174442]">Responsabilidade técnica</h3>
+                <p class="mt-1 text-sm text-[#6f7774]">
+                  Atuação fundamentada na ética e no cuidado profissional.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <article class="card-border soft-shadow grid gap-8 rounded-[2rem] bg-white p-6 md:grid-cols-[0.95fr_1.05fr] md:p-8">
+          <div class="min-h-[360px] rounded-[1.5rem] bg-gradient-to-br from-[#ccb8a4]/45 via-[#f3eeea] to-[#338d83]/20 p-8">
+            <div class="mx-auto mt-12 h-36 w-36 rounded-full bg-[#e8d1c2]"></div>
+            <div class="mx-auto mt-[-18px] h-44 w-52 rounded-t-[5rem] bg-white shadow-lg"></div>
+          </div>
+
+          <div class="flex flex-col justify-center">
+            <p class="text-sm font-semibold text-[#338d83]">Psicóloga Responsável</p>
+
+            <h3 class="mt-3 text-4xl font-normal leading-tight text-[#174442]">
+              {site.professionalName}
+            </h3>
+
+            <p class="mt-3 text-sm text-[#6f7774]">{site.crp}</p>
+
+            <div class="mt-5 h-1 w-14 rounded-full bg-[#f4b3e1]"></div>
+
+            <p class="mt-6 text-sm leading-7 text-[#6f7774]">
+              Psicóloga clínica com atuação em psicoterapia de adultos e avaliação psicológica.
+              Formação contínua e atualização permanente para oferecer um cuidado ético,
+              acolhedor e responsável.
+            </p>
+
+            <a href="#contato" class="mt-7 text-sm font-semibold text-[#338d83]">
+              Saiba mais sobre a profissional →
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="bg-white py-20">
+      <div class="container-elus">
+        <div class="mx-auto max-w-2xl text-center">
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">
+            Como funciona
+          </p>
+
+          <h2 class="mt-4 text-4xl font-normal text-[#174442] md:text-5xl">
+            Seu primeiro passo é simples
+          </h2>
+
+          <div class="mx-auto mt-4 h-1 w-16 rounded-full bg-[#f4b3e1]"></div>
+        </div>
+
+        <div class="mt-14 grid gap-6 md:grid-cols-3">
+          {steps.map((step) => (
+            <article class="relative rounded-[1.75rem] bg-[#fbf8f5] p-7">
+              <div class="flex items-start gap-5">
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#338d83] text-sm font-bold text-white">
+                  {step.number}
+                </span>
+
+                <div>
+                  <div class="flex h-16 w-16 items-center justify-center rounded-full bg-white text-3xl">
+                    {step.icon}
+                  </div>
+
+                  <h3 class="mt-5 text-xl font-semibold text-[#174442]">
+                    {step.title}
+                  </h3>
+
+                  <p class="mt-3 text-sm leading-7 text-[#6f7774]">
+                    {step.text}
+                  </p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="bg-white pb-20">
+      <div class="container-elus">
+        <div class="relative overflow-hidden rounded-[2rem] bg-[#338d83] p-9 text-white md:p-12">
+          <div class="absolute -left-16 -top-16 h-52 w-52 rounded-full border border-white/20"></div>
+          <div class="absolute -right-16 -bottom-16 h-56 w-56 rounded-full border border-white/20"></div>
+
+          <div class="relative flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+            <div>
+              <h2 class="text-4xl font-normal">Vamos conversar?</h2>
+              <p class="mt-3 max-w-xl text-white/85">
+                Estou aqui para te ouvir e caminhar ao seu lado.
+              </p>
+            </div>
+
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-full bg-white px-7 py-4 text-sm font-bold text-[#338d83] transition hover:bg-[#f3eeea]"
+            >
+              Agendar pelo WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-[#e8ded6] bg-[#fbf8f5] py-12">
+    <div class="container-elus grid gap-10 md:grid-cols-4">
+      <div>
+        <img src="/logo-elus.png" alt="Elus Psicologia" class="h-16 w-auto" />
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-[#174442]">Atendimento</h3>
+        <ul class="mt-4 space-y-2 text-sm text-[#6f7774]">
+          <li>WhatsApp: (21) 99999-9999</li>
+          <li>{site.email}</li>
+          <li>{site.location}</li>
+          <li>Presencial e online</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-[#174442]">Instagram</h3>
+        <p class="mt-4 text-sm text-[#6f7774]">{site.instagramUser}</p>
+        <p class="mt-3 text-sm leading-6 text-[#6f7774]">
+          Conteúdos sobre saúde mental, bem-estar e desenvolvimento pessoal.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-[#174442]">Informações</h3>
+        <a href="#" class="mt-4 block text-sm text-[#6f7774]">
+          Política de Privacidade
+        </a>
+        <p class="mt-8 text-sm text-[#6f7774]">
+          © {new Date().getFullYear()} Elus Psicologia.
+          Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
