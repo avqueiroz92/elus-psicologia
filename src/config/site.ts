@@ -13,7 +13,7 @@ export const site = {
   instagram: "https://www.instagram.com/elus.psicologia",
   instagramUser: "@elus.psicologia",
 
-  location: "Rio de Janeiro - RJ",
+  location: "Barra da Tijuca, Rio de Janeiro - RJ",
   whatsappMessage:
     "Olá, vim pelo site da Elus Psicologia e gostaria de saber mais sobre os atendimentos.",
 };
