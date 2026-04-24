@@ -1,17 +1,17 @@
 export const site = {
   name: "Elus Psicologia",
-  title: "Elus Psicologia | Psicoterapia e Avaliação Psicológica",
+  title: "Elus Psicologia | Psicoterapia e Avaliação NeuroPsicológica",
   description:
-    "Psicoterapia, avaliação psicológica e atendimento online com escuta, ética e responsabilidade técnica.",
+    "Psicoterapia, avaliação NeuroPsicológica e atendimento presencial e online com escuta, ética e responsabilidade técnica.",
   url: "https://eluspsicologia.com.br",
 
   professionalName: "Jessica Albuquerque Vasconcelos",
-  crp: "CRP 00/00000",
+  crp: "CRP 06/162373",
 
-  phone: "5521999999999",
-  email: "contato@eluspsicologia.com.br",
-  instagram: "https://www.instagram.com/elus.psicologia",
-  instagramUser: "@elus.psicologia",
+  phone: "5511983273584",
+  email: "psicologa.jessicaalbuquerque@gmail.com",
+  instagram: "https://www.instagram.com/elus_psicologia",
+  instagramUser: "@elus_psicologia",
 
   location: "Barra da Tijuca, Rio de Janeiro - RJ",
   whatsappMessage:
