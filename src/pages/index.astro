@@ -6,7 +6,7 @@ const navItems = [
   { label: "Início", href: "#inicio" },
   { label: "Sobre", href: "#sobre" },
   { label: "Psicoterapia", href: "#servicos" },
-  { label: "Avaliação Psicológica", href: "#servicos" },
+  { label: "Avaliação Neuropsicológica", href: "#servicos" },
   { label: "Atendimento Online", href: "#servicos" },
   { label: "Contato", href: "#contato" },
 ];
@@ -19,13 +19,13 @@ const services = [
     description:
       "Processo terapêutico individual para compreender emoções, pensamentos e comportamentos, fortalecendo recursos internos.",
   },
-  {
-    title: "Avaliação Psicológica",
-    icon: "📋",
-    color: "bg-[#bfa5ed]",
-    description:
-      "Avaliação técnica e cuidadosa para diferentes demandas, com instrumentos adequados e devolutivas claras.",
-  },
+ {
+  title: "Avaliação Neuropsicológica",
+  icon: "📋",
+  color: "bg-[#bfa5ed]",
+  description:
+    "Avaliação especializada para investigar funções cognitivas, emocionais e comportamentais, com instrumentos adequados e devolutiva cuidadosa.",
+},
   {
     title: "Atendimento Online",
     icon: "💻",
@@ -64,7 +64,7 @@ const steps = [
         <img
           src="/logo-elus.png"
           alt="Elus Psicologia"
-          class="h-14 w-auto"
+          class="h-20 w-auto"
           loading="eager"
         />
       </a>
@@ -102,7 +102,7 @@ const steps = [
         <div class="mt-5 h-3 w-32 rounded-full border-b-2 border-[#f4b3e1]"></div>
 
         <p class="mt-8 max-w-xl text-base leading-8 text-[#6f7774] md:text-lg">
-          Psicoterapia, avaliação psicológica e atendimento online para apoiar você em seus desafios,
+          Psicoterapia, avaliação Neuropsicológica e atendimento online para apoiar você em seus desafios,
           ampliar recursos internos e promover mais bem-estar e qualidade de vida.
         </p>
 
@@ -142,38 +142,19 @@ const steps = [
         </div>
       </div>
 
-      <div class="relative">
-        <div class="absolute -left-8 top-24 h-20 w-20 rounded-full bg-[#bfa5ed]/75"></div>
-        <div class="absolute -right-8 top-20 h-72 w-72 rounded-full border border-[#338d83]/35"></div>
-        <div class="dot-pattern absolute -right-8 bottom-14 h-40 w-40 opacity-70"></div>
-
-        <div class="hero-visual soft-shadow relative overflow-hidden rounded-[3rem] p-7">
-          <div class="relative min-h-[560px] overflow-hidden rounded-[2.5rem] bg-[#f3eeea]">
-            <div class="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-[#ccb8a4]/35 to-transparent"></div>
-
-            <div class="absolute left-1/2 top-16 h-40 w-32 -translate-x-1/2 rounded-xl border-[10px] border-[#caa98b] bg-white p-4 shadow-lg">
-              <div class="h-full rounded-lg bg-[#f6eee8]">
-                <div class="absolute left-8 top-14 h-16 w-12 rounded-full bg-[#ccb8a4]/70"></div>
-                <div class="absolute right-9 top-12 h-11 w-11 rounded-full bg-[#174442]"></div>
-                <div class="absolute bottom-10 left-1/2 h-20 w-[1px] -translate-x-1/2 bg-[#338d83]"></div>
-              </div>
-            </div>
-
-            <div class="absolute bottom-20 left-[18%] h-72 w-64 rounded-[42%_42%_18%_18%] bg-white shadow-2xl">
-              <div class="absolute -top-8 left-1/2 h-16 w-40 -translate-x-1/2 rounded-t-full bg-white"></div>
-              <div class="absolute bottom-8 left-1/2 h-14 w-32 -translate-x-1/2 rounded-2xl bg-[#cce0db]"></div>
-            </div>
-
-            <div class="absolute bottom-14 left-12 h-28 w-28 rounded-full bg-[#b98f65]/50"></div>
-            <div class="absolute bottom-20 left-20 h-4 w-36 rounded-full bg-[#9a7b6c]/40"></div>
-
-            <div class="absolute bottom-18 right-14 h-72 w-28 rounded-full bg-[#e1d2c4]"></div>
-            <div class="absolute bottom-48 right-20 h-36 w-20 -rotate-12 rounded-full bg-[#2d6f4f]"></div>
-            <div class="absolute bottom-52 right-32 h-32 w-16 rotate-12 rounded-full bg-[#2d6f4f]"></div>
-            <div class="absolute bottom-36 right-6 h-40 w-16 rotate-[28deg] rounded-full bg-[#2d6f4f]"></div>
-          </div>
-        </div>
-      </div>
+<div class="relative">
+  <div class="soft-shadow relative flex min-h-[560px] items-center justify-center overflow-hidden rounded-[3rem] bg-[#f7f1ec] p-8">
+    <div class="relative z-10 flex h-[460px] w-[460px] items-center justify-center rounded-[2.5rem] bg-white/75 p-8 backdrop-blur-sm">
+      <img
+        src="/icone-elus.png"
+        alt="Ícone da marca Elus Psicologia"
+        class="h-auto w-full max-w-[410px] object-contain"
+        loading="eager"
+      />
+    </div>
+  </div>
+</div>
+      
     </section>
 
     <section id="servicos" class="border-y border-[#e8ded6] bg-white py-20">
@@ -285,15 +266,15 @@ const steps = [
 
             <div class="mt-5 h-1 w-14 rounded-full bg-[#f4b3e1]"></div>
 
-            <p class="mt-6 text-sm leading-7 text-[#6f7774]">
-              Psicóloga clínica com atuação em psicoterapia de adultos e avaliação psicológica.
-              Formação contínua e atualização permanente para oferecer um cuidado ético,
-              acolhedor e responsável.
-            </p>
+			<p class="mt-6 text-sm leading-7 text-[#6f7774]">
+			Psicóloga clínica e neuropsicóloga, com experiência no atendimento de adultos,
+			adolescentes e famílias. Atua com escuta acolhedora, orientação parental e avaliação
+			neuropsicológica, integrando conhecimento técnico, ética e sensibilidade ao cuidado.
+			</p>
 
-            <a href="#contato" class="mt-7 text-sm font-semibold text-[#338d83]">
-              Saiba mais sobre a profissional →
-            </a>
+            <a href="/sobre-jessica" class="mt-7 text-sm font-semibold text-[#338d83]">
+ 			 Saiba mais sobre a profissional →
+			</a>
           </div>
         </article>
       </div>
@@ -372,13 +353,13 @@ const steps = [
   <footer class="border-t border-[#e8ded6] bg-[#fbf8f5] py-12">
     <div class="container-elus grid gap-10 md:grid-cols-4">
       <div>
-        <img src="/logo-elus.png" alt="Elus Psicologia" class="h-16 w-auto" />
+        <img src="/logo-elus.png" alt="Elus Psicologia" class="h-20 w-auto" />
       </div>
 
       <div>
         <h3 class="font-semibold text-[#174442]">Atendimento</h3>
         <ul class="mt-4 space-y-2 text-sm text-[#6f7774]">
-          <li>WhatsApp: (21) 99999-9999</li>
+          <li>WhatsApp: (11) 98327-3584</li>
           <li>{site.email}</li>
           <li>{site.location}</li>
           <li>Presencial e online</li>
