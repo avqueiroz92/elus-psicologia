@@ -1,8 +1,8 @@
 export const site = {
   name: "Elus Psicologia",
-  title: "Elus Psicologia | Psicoterapia e Avaliação NeuroPsicológica",
+  title: "Elus Psicologia | Psicoterapia e Avaliação Neuropsicológica",
   description:
-    "Psicoterapia, avaliação NeuroPsicológica e atendimento presencial e online com escuta, ética e responsabilidade técnica.",
+  "Psicoterapia, avaliação neuropsicológica e atendimento online com escuta acolhedora, ética e responsabilidade técnica.",
   url: "https://eluspsicologia.com.br",
 
   professionalName: "Jessica Albuquerque Vasconcelos",
