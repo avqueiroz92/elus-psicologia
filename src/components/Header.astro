@@ -1,0 +1,42 @@
+---
+import { whatsappLink } from "../config/site";
+
+const navItems = [
+  { label: "Início", href: "/#inicio" },
+  { label: "Sobre", href: "/#sobre" },
+  { label: "Psicoterapia", href: "/#servicos" },
+  { label: "Avaliação Neuropsicológica", href: "/#servicos" },
+  { label: "Atendimento Online", href: "/#servicos" },
+  { label: "Contato", href: "/#contato" },
+];
+---
+
+<header class="fixed inset-x-0 top-0 z-50 border-b border-[#e8ded6]/80 bg-[#fbf8f5]/90 backdrop-blur-xl">
+  <div class="container-elus flex min-h-20 items-center justify-between gap-6">
+    <a href="/#inicio" class="flex items-center gap-3" aria-label="Elus Psicologia">
+      <img
+        src="/logo-elus.png"
+        alt="Elus Psicologia"
+        class="h-20 w-auto"
+        loading="eager"
+      />
+    </a>
+
+    <nav class="hidden items-center gap-7 text-sm text-[#4e5c59] lg:flex">
+      {navItems.map((item) => (
+        <a href={item.href} class="transition hover:text-[#338d83]">
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href={whatsappLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="hidden rounded-full bg-[#338d83] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-[#338d83]/20 transition hover:bg-[#185c58] md:inline-flex"
+    >
+      Agendar conversa
+    </a>
+  </div>
+</header>

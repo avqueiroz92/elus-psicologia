@@ -1,0 +1,40 @@
+---
+import { site } from "../config/site";
+---
+
+<footer class="border-t border-[#e8ded6] bg-[#fbf8f5] py-12">
+  <div class="container-elus grid gap-10 md:grid-cols-4">
+    <div>
+      <img src="/logo-elus.png" alt="Elus Psicologia" class="h-20 w-auto" />
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-[#174442]">Atendimento</h3>
+      <ul class="mt-4 space-y-2 text-sm text-[#6f7774]">
+        <li>WhatsApp: (11) 98327-3584</li>
+        <li>{site.email}</li>
+        <li>{site.location}</li>
+        <li>Presencial e online</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-[#174442]">Instagram</h3>
+      <p class="mt-4 text-sm text-[#6f7774]">{site.instagramUser}</p>
+      <p class="mt-3 text-sm leading-6 text-[#6f7774]">
+        Conteúdos sobre saúde mental, bem-estar e desenvolvimento pessoal.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="font-semibold text-[#174442]">Informações</h3>
+      <a href="/politica-de-privacidade" class="mt-4 block text-sm text-[#6f7774]">
+        Política de Privacidade
+      </a>
+      <p class="mt-8 text-sm text-[#6f7774]">
+        © {new Date().getFullYear()} Elus Psicologia.
+        Todos os direitos reservados.
+      </p>
+    </div>
+  </div>
+</footer>
