@@ -7,20 +7,23 @@ const services = [
     title: "Psicoterapia",
     icon: "💬",
     color: "bg-[#338d83]",
+    href: "#contato",
     description:
       "Processo terapêutico individual para compreender emoções, pensamentos e comportamentos, fortalecendo recursos internos.",
   },
- {
-  title: "Avaliação Neuropsicológica",
-  icon: "📋",
-  color: "bg-[#bfa5ed]",
-  description:
-    "Processo técnico para compreender funções cognitivas, emocionais e comportamentais, com instrumentos adequados e devolutiva cuidadosa.",
-},
+  {
+    title: "Avaliação Neuropsicológica",
+    icon: "📋",
+    color: "bg-[#bfa5ed]",
+    href: "/avaliacao-neuropsicologica",
+    description:
+      "Processo técnico para compreender funções cognitivas, emocionais e comportamentais, com instrumentos adequados e devolutiva cuidadosa.",
+  },
   {
     title: "Atendimento Online",
     icon: "💻",
     color: "bg-[#f4b3e1]",
+    href: "#contato",
     description:
       "Atendimento mediado por tecnologia, com acolhimento, sigilo e avaliação da adequação para cada caso.",
   },
@@ -147,9 +150,9 @@ const steps = [
                 {service.description}
               </p>
 
-              <a href="#contato" class="mt-7 inline-flex text-sm font-semibold text-[#338d83]">
-                Saiba mais →
-              </a>
+                        <a href={service.href} class="mt-7 inline-flex text-sm font-semibold text-[#338d83]">
+              Saiba mais →
+            </a>
             </article>
           ))}
         </div>
