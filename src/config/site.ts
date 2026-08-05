@@ -4,6 +4,7 @@ export const site = {
   description:
     "Psicoterapia, avaliação neuropsicológica e atendimento online com escuta acolhedora, ética e responsabilidade técnica.",
   url: "https://eluspsicologia.com.br",
+  analyticsMeasurementId: "G-PJTE6G9DC6",
 
   professionalName: "Jessica Albuquerque Vasconcelos",
   crp: "CRP 05/87372",

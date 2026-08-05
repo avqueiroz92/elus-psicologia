@@ -64,7 +64,22 @@ import { site } from "../config/site";
         </section>
 
         <section>
-          <h2 class="text-2xl font-normal text-[#174442]">5. Canais de terceiros</h2>
+          <h2 class="text-2xl font-normal text-[#174442]">5. Métricas e cookies</h2>
+          <p class="mt-3">
+            Com a sua autorização, o site utiliza o Google Analytics para coletar
+            métricas agregadas, como páginas visitadas, origem do acesso e cliques
+            em canais de contato. O recurso não deve receber conteúdo de mensagens,
+            informações clínicas ou dados inseridos em conversas com a ELUS.
+          </p>
+          <p class="mt-3">
+            O Google Analytics somente é ativado após a escolha “Aceitar métricas”.
+            A preferência é armazenada no próprio navegador. Caso a pessoa recuse,
+            o funcionamento essencial do site permanece disponível.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-normal text-[#174442]">6. Canais de terceiros</h2>
           <p class="mt-3">
             O contato por WhatsApp, Instagram ou e-mail também está sujeito às
             políticas de privacidade dessas plataformas.
@@ -72,7 +87,7 @@ import { site } from "../config/site";
         </section>
 
         <section>
-          <h2 class="text-2xl font-normal text-[#174442]">6. Solicitações</h2>
+          <h2 class="text-2xl font-normal text-[#174442]">7. Solicitações</h2>
           <p class="mt-3">
             Você pode solicitar informações, correções ou exclusão de dados
             pessoais enviados pelos canais de contato da Elus Psicologia.
@@ -80,7 +95,21 @@ import { site } from "../config/site";
         </section>
 
         <section>
-          <h2 class="text-2xl font-normal text-[#174442]">7. Contato</h2>
+          <h2 class="text-2xl font-normal text-[#174442]">8. Preferência de métricas</h2>
+          <p class="mt-3">
+            Você pode rever sua escolha a qualquer momento neste navegador.
+          </p>
+          <button
+            id="reset-analytics-consent"
+            type="button"
+            class="mt-4 rounded-full border border-[#d8cec6] bg-white px-5 py-3 text-sm font-bold text-[#174442] transition hover:border-[#338d83]"
+          >
+            Alterar preferência de métricas
+          </button>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-normal text-[#174442]">9. Contato</h2>
           <p class="mt-3">
             Em caso de dúvidas sobre esta política, entre em contato pelo e-mail:
             {site.email}.
@@ -88,9 +117,16 @@ import { site } from "../config/site";
         </section>
 
         <p class="text-sm text-[#8a918d]">
-          Última atualização: abril de 2026.
+          Última atualização: agosto de 2026.
         </p>
       </div>
     </section>
   </main>
+
+  <script>
+    document.getElementById("reset-analytics-consent")?.addEventListener("click", () => {
+      localStorage.removeItem("elus-analytics-consent");
+      window.location.reload();
+    });
+  </script>
 </BaseLayout>
