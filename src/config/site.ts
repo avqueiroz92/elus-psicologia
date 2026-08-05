@@ -2,7 +2,7 @@ export const site = {
   name: "Elus Psicologia",
   title: "Elus Psicologia | Psicoterapia e Avaliação Neuropsicológica",
   description:
-  "Psicoterapia, avaliação neuropsicológica e atendimento online com escuta acolhedora, ética e responsabilidade técnica.",
+    "Psicoterapia, avaliação neuropsicológica e atendimento online com escuta acolhedora, ética e responsabilidade técnica.",
   url: "https://eluspsicologia.com.br",
 
   professionalName: "Jessica Albuquerque Vasconcelos",
@@ -13,7 +13,10 @@ export const site = {
   instagram: "https://www.instagram.com/elus_psicologia",
   instagramUser: "@elus_psicologia",
 
-  location: "Avenida Ator José Wilker, 605, Barra Olímpica, Jacarepaguá, Rio de Janeiro - RJ, 22775-024",
+  placeName: "Centro Metropolitano",
+  location: "Avenida Ator José Wilker, 605, Jacarepaguá, Rio de Janeiro - RJ, 22775-024",
+  locationContext:
+    "Localização próxima à Barra da Tijuca, Barra Olímpica e aos bairros da região.",
   whatsappMessage:
     "Olá, vim pelo site da Elus Psicologia e gostaria de saber mais sobre os atendimentos.",
 };
