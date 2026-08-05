@@ -49,14 +49,19 @@ const steps = [
     icon: "🌿",
   },
 ];
+
+const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.location)}`;
 ---
 
-<BaseLayout>
+<BaseLayout
+  title="Elus Psicologia | Psicóloga na Barra Olímpica, Rio de Janeiro"
+  description="Psicoterapia e avaliação neuropsicológica com Jéssica Albuquerque Vasconcelos, na Barra Olímpica, em Jacarepaguá, com fácil acesso à Barra da Tijuca."
+>
   <main id="inicio" class="pt-20">
     <section class="container-elus grid min-h-[calc(100vh-80px)] items-center gap-12 py-14 lg:grid-cols-[0.95fr_1.05fr] lg:py-20">
       <div>
         <p class="mb-5 inline-flex rounded-full border border-[#e8ded6] bg-white px-4 py-2 text-sm font-medium text-[#338d83]">
-          Psicologia com acolhimento e clareza
+          Atendimento presencial na Barra Olímpica e online
         </p>
 
         <h1 class="max-w-2xl text-5xl font-normal leading-[1.05] tracking-tight text-[#174442] md:text-7xl">
@@ -66,8 +71,9 @@ const steps = [
         <div class="mt-5 h-3 w-32 rounded-full border-b-2 border-[#f4b3e1]"></div>
 
               <p class="mt-8 max-w-xl text-base leading-8 text-[#6f7774] md:text-lg">
-          Psicoterapia, avaliação neuropsicológica e atendimento online para adultos,
-          adolescentes e famílias, com escuta acolhedora, ética e responsabilidade técnica.
+          Psicoterapia e avaliação neuropsicológica para crianças, adolescentes e adultos,
+          com atendimento presencial na Barra Olímpica, em Jacarepaguá, fácil acesso à
+          Barra da Tijuca, e também na modalidade online.
         </p>
 
         <div class="mt-9 flex flex-col gap-4 sm:flex-row">
@@ -77,7 +83,7 @@ const steps = [
             rel="noopener noreferrer"
             class="rounded-full bg-[#338d83] px-7 py-4 text-center text-sm font-semibold text-white shadow-lg shadow-[#338d83]/20 transition hover:bg-[#185c58]"
           >
-            Agendar pelo WhatsApp
+            Consultar horários no WhatsApp
           </a>
 
           <a
@@ -287,6 +293,74 @@ const steps = [
       </div>
     </section>
 
+    <section id="localizacao" class="border-y border-[#e8ded6] bg-[#fbf8f5] py-20">
+      <div class="container-elus grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div>
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">
+            Onde estamos
+          </p>
+
+          <h2 class="mt-4 text-4xl font-normal leading-tight text-[#174442] md:text-5xl">
+            Atendimento presencial na Barra Olímpica.
+          </h2>
+
+          <div class="mt-4 h-1 w-16 rounded-full bg-[#f4b3e1]"></div>
+
+          <p class="mt-7 max-w-2xl text-base leading-8 text-[#6f7774]">
+            A ELUS Psicologia está localizada na Avenida Ator José Wilker, 605,
+            em Jacarepaguá, com fácil acesso à Barra da Tijuca e aos bairros da região.
+            Os atendimentos acontecem com horário previamente agendado.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a
+              href={mapsLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-full bg-[#338d83] px-7 py-4 text-center text-sm font-semibold text-white transition hover:bg-[#185c58]"
+            >
+              Ver rota no Google Maps
+            </a>
+
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-full border border-[#338d83]/50 bg-white px-7 py-4 text-center text-sm font-semibold text-[#338d83] transition hover:bg-[#f3eeea]"
+            >
+              Consultar horários
+            </a>
+          </div>
+        </div>
+
+        <div class="card-border soft-shadow rounded-[2rem] bg-white p-8">
+          <h3 class="text-2xl font-normal text-[#174442]">Informações para sua visita</h3>
+
+          <dl class="mt-7 space-y-6 text-sm leading-7 text-[#6f7774]">
+            <div>
+              <dt class="font-semibold text-[#174442]">Endereço</dt>
+              <dd>{site.location}</dd>
+            </div>
+
+            <div>
+              <dt class="font-semibold text-[#174442]">Atendimento</dt>
+              <dd>Presencial e online, mediante agendamento.</dd>
+            </div>
+
+            <div>
+              <dt class="font-semibold text-[#174442]">Horários</dt>
+              <dd>Segunda a sexta, das 8h às 18h. Sábado, das 9h às 13h.</dd>
+            </div>
+
+            <div>
+              <dt class="font-semibold text-[#174442]">Região</dt>
+              <dd>Barra Olímpica, Jacarepaguá, com fácil acesso à Barra da Tijuca.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
     <section id="contato" class="bg-white pb-20">
       <div class="container-elus">
         <div class="relative overflow-hidden rounded-[2rem] bg-[#338d83] p-9 text-white md:p-12">
@@ -297,7 +371,7 @@ const steps = [
             <div>
               <h2 class="text-4xl font-normal">Vamos conversar?</h2>
               <p class="mt-3 max-w-xl text-white/85">
-                Estou aqui para te ouvir e caminhar ao seu lado.
+                Tire suas dúvidas e consulte a disponibilidade de horários para atendimento presencial ou online.
               </p>
             </div>
 
@@ -307,7 +381,7 @@ const steps = [
               rel="noopener noreferrer"
               class="rounded-full bg-white px-7 py-4 text-sm font-bold text-[#338d83] transition hover:bg-[#f3eeea]"
             >
-              Agendar pelo WhatsApp
+              Falar com a ELUS
             </a>
           </div>
         </div>

@@ -7,22 +7,23 @@ const navItems = [
   { label: "Psicoterapia", href: "/#servicos" },
   { label: "Avaliação Neuropsicológica", href: "/avaliacao-neuropsicologica" },
   { label: "Atendimento Online", href: "/#servicos" },
+  { label: "Localização", href: "/#localizacao" },
   { label: "Contato", href: "/#contato" },
 ];
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 border-b border-[#e8ded6]/80 bg-[#fbf8f5]/90 backdrop-blur-xl">
-  <div class="container-elus flex min-h-20 items-center justify-between gap-6">
-    <a href="/#inicio" class="flex items-center gap-3" aria-label="Elus Psicologia">
+<header class="fixed inset-x-0 top-0 z-50 border-b border-[#e8ded6]/80 bg-[#fbf8f5]/95 backdrop-blur-xl">
+  <div class="container-elus flex min-h-20 items-center justify-between gap-4">
+    <a href="/#inicio" class="flex items-center gap-3" aria-label="Ir para o início da Elus Psicologia">
       <img
         src="/logo-elus.png"
         alt="Elus Psicologia"
-        class="h-20 w-auto"
+        class="h-16 w-auto sm:h-20"
         loading="eager"
       />
     </a>
 
-    <nav class="hidden items-center gap-7 text-sm text-[#4e5c59] lg:flex">
+    <nav class="hidden items-center gap-6 text-sm text-[#4e5c59] lg:flex" aria-label="Navegação principal">
       {navItems.map((item) => (
         <a href={item.href} class="transition hover:text-[#338d83]">
           {item.label}
@@ -34,9 +35,42 @@ const navItems = [
       href={whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
-      class="hidden rounded-full bg-[#338d83] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-[#338d83]/20 transition hover:bg-[#185c58] md:inline-flex"
+      class="hidden rounded-full bg-[#338d83] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-[#338d83]/20 transition hover:bg-[#185c58] lg:inline-flex"
     >
-      Agendar conversa
+      Consultar horários
     </a>
+
+    <details class="group relative lg:hidden">
+      <summary
+        class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border border-[#e8ded6] bg-white text-[#174442] shadow-sm transition hover:border-[#338d83]/50"
+        aria-label="Abrir menu de navegação"
+      >
+        <svg class="h-5 w-5 group-open:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+        </svg>
+        <svg class="hidden h-5 w-5 group-open:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+        </svg>
+      </summary>
+
+      <nav class="absolute right-0 top-14 w-[min(320px,calc(100vw-32px))] rounded-2xl border border-[#e8ded6] bg-white p-4 shadow-xl" aria-label="Navegação móvel">
+        <div class="flex flex-col">
+          {navItems.map((item) => (
+            <a href={item.href} class="rounded-xl px-4 py-3 text-sm text-[#4e5c59] transition hover:bg-[#fbf8f5] hover:text-[#338d83]">
+              {item.label}
+            </a>
+          ))}
+
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-3 rounded-full bg-[#338d83] px-5 py-3 text-center text-sm font-semibold text-white"
+          >
+            Consultar horários no WhatsApp
+          </a>
+        </div>
+      </nav>
+    </details>
   </div>
 </header>
