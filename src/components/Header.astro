@@ -8,98 +8,150 @@ const serviceItems = [
 ];
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 border-b border-[#e8ded6]/80 bg-[#fbf8f5]/95 backdrop-blur-xl">
-  <div class="container-elus flex min-h-20 items-center justify-between gap-4">
-    <a href="/" class="flex items-center gap-3" aria-label="Ir para o início da Elus Psicologia">
+<header class="fixed inset-x-0 top-0 z-50 border-b border-[#e8ded6]/90 bg-[#fbf8f5]/95 backdrop-blur-xl">
+  <div class="container-elus flex min-h-16 items-center justify-between gap-3 sm:min-h-20">
+    <a href="/" class="flex shrink-0 items-center" aria-label="Ir para o início da Elus Psicologia">
       <img
         src="/logo-elus.png"
         alt="Elus Psicologia"
-        class="h-16 w-auto sm:h-20"
+        class="h-12 w-auto sm:h-14 xl:h-16"
+        width="176"
+        height="80"
         loading="eager"
       />
     </a>
 
-    <nav class="hidden items-center gap-6 text-sm text-[#4e5c59] lg:flex" aria-label="Navegação principal">
-      <a href="/" class="transition hover:text-[#338d83]">Início</a>
-      <a href="/a-elus" class="transition hover:text-[#338d83]">A ELUS</a>
+    <nav class="hidden items-center gap-5 text-sm text-[#4e5c59] xl:flex" aria-label="Navegação principal">
+      <a href="/" class="rounded-lg px-2 py-3 transition hover:text-[#338d83]">Início</a>
+      <a href="/a-elus" class="rounded-lg px-2 py-3 transition hover:text-[#338d83]">A ELUS</a>
 
       <details class="group relative">
-        <summary class="flex cursor-pointer list-none items-center gap-1 transition hover:text-[#338d83]">
+        <summary class="flex cursor-pointer list-none items-center gap-1 rounded-lg px-2 py-3 transition hover:text-[#338d83]">
           Serviços
           <svg class="h-4 w-4 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </summary>
 
-        <div class="absolute left-1/2 top-8 w-72 -translate-x-1/2 rounded-2xl border border-[#e8ded6] bg-white p-3 shadow-xl">
+        <div class="absolute left-1/2 top-full w-72 -translate-x-1/2 pt-2">
+          <div class="rounded-2xl border border-[#e8ded6] bg-white p-3 shadow-xl">
+            {serviceItems.map((item) => (
+              <a
+                href={item.href}
+                class="block rounded-xl px-4 py-3 text-[#4e5c59] transition hover:bg-[#fbf8f5] hover:text-[#338d83]"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </details>
+
+      <a href="/sobre-jessica" class="rounded-lg px-2 py-3 transition hover:text-[#338d83]">Jéssica</a>
+      <a href="/#contato" class="rounded-lg px-2 py-3 transition hover:text-[#338d83]">Contato</a>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden rounded-full bg-[#338d83] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-[#338d83]/20 transition hover:bg-[#185c58] xl:inline-flex"
+      >
+        Consultar horários
+      </a>
+
+      <button
+        id="mobile-menu-button"
+        type="button"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d9cec5] bg-white text-[#174442] shadow-sm transition hover:border-[#338d83]/60 hover:text-[#338d83] xl:hidden"
+        aria-label="Abrir menu"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <svg data-menu-open-icon class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+        </svg>
+        <svg data-menu-close-icon class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="absolute inset-x-0 top-full hidden max-h-[calc(100vh-64px)] overflow-y-auto border-t border-[#e8ded6] bg-[#fbf8f5] shadow-xl xl:hidden"
+  >
+    <nav class="container-elus flex flex-col gap-1 py-4" aria-label="Navegação móvel">
+      <a href="/" class="rounded-xl px-4 py-3.5 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">Início</a>
+      <a href="/a-elus" class="rounded-xl px-4 py-3.5 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">A ELUS</a>
+
+      <details class="group/mobile-services rounded-xl">
+        <summary class="flex cursor-pointer list-none items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">
+          Serviços
+          <svg class="h-5 w-5 transition group-open/mobile-services:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </summary>
+
+        <div class="ml-4 border-l-2 border-[#d7ebe8] py-1 pl-3">
           {serviceItems.map((item) => (
-            <a href={item.href} class="block rounded-xl px-4 py-3 transition hover:bg-[#fbf8f5] hover:text-[#338d83]">
+            <a
+              href={item.href}
+              class="block rounded-xl px-4 py-3 text-sm text-[#4e5c59] transition hover:bg-white hover:text-[#338d83]"
+            >
               {item.label}
             </a>
           ))}
         </div>
       </details>
 
-      <a href="/sobre-jessica" class="transition hover:text-[#338d83]">Jéssica Albuquerque</a>
-      <a href="/#contato" class="transition hover:text-[#338d83]">Contato</a>
-    </nav>
+      <a href="/sobre-jessica" class="rounded-xl px-4 py-3.5 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">Jéssica Albuquerque</a>
+      <a href="/#contato" class="rounded-xl px-4 py-3.5 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">Contato</a>
 
-    <a
-      href={whatsappLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="hidden rounded-full bg-[#338d83] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-[#338d83]/20 transition hover:bg-[#185c58] lg:inline-flex"
-    >
-      Consultar horários
-    </a>
-
-    <details class="group relative lg:hidden">
-      <summary
-        class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border border-[#e8ded6] bg-white text-[#174442] shadow-sm transition hover:border-[#338d83]/50"
-        aria-label="Abrir menu de navegação"
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-3 rounded-full bg-[#338d83] px-6 py-4 text-center text-sm font-bold text-white shadow-md shadow-[#338d83]/20 transition hover:bg-[#185c58]"
       >
-        <svg class="h-5 w-5 group-open:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
-        </svg>
-        <svg class="hidden h-5 w-5 group-open:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
-        </svg>
-      </summary>
-
-      <nav class="absolute right-0 top-14 max-h-[calc(100vh-96px)] w-[min(340px,calc(100vw-32px))] overflow-y-auto rounded-2xl border border-[#e8ded6] bg-white p-4 shadow-xl" aria-label="Navegação móvel">
-        <div class="flex flex-col">
-          <a href="/" class="rounded-xl px-4 py-3 text-sm text-[#4e5c59] transition hover:bg-[#fbf8f5] hover:text-[#338d83]">Início</a>
-          <a href="/a-elus" class="rounded-xl px-4 py-3 text-sm text-[#4e5c59] transition hover:bg-[#fbf8f5] hover:text-[#338d83]">A ELUS</a>
-
-          <details class="group/services">
-            <summary class="flex cursor-pointer list-none items-center justify-between rounded-xl px-4 py-3 text-sm text-[#4e5c59] transition hover:bg-[#fbf8f5] hover:text-[#338d83]">
-              Serviços
-              <svg class="h-4 w-4 transition group-open/services:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </summary>
-            <div class="ml-3 border-l border-[#e8ded6] pl-3">
-              {serviceItems.map((item) => (
-                <a href={item.href} class="block rounded-xl px-4 py-3 text-sm text-[#4e5c59] transition hover:bg-[#fbf8f5] hover:text-[#338d83]">
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </details>
-
-          <a href="/sobre-jessica" class="rounded-xl px-4 py-3 text-sm text-[#4e5c59] transition hover:bg-[#fbf8f5] hover:text-[#338d83]">Jéssica Albuquerque</a>
-          <a href="/#contato" class="rounded-xl px-4 py-3 text-sm text-[#4e5c59] transition hover:bg-[#fbf8f5] hover:text-[#338d83]">Contato</a>
-
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-3 rounded-full bg-[#338d83] px-5 py-3 text-center text-sm font-semibold text-white"
-          >
-            Consultar horários no WhatsApp
-          </a>
-        </div>
-      </nav>
-    </details>
+        Consultar horários no WhatsApp
+      </a>
+    </nav>
   </div>
 </header>
+
+<script>
+  const menuButton = document.querySelector<HTMLButtonElement>("#mobile-menu-button");
+  const mobileMenu = document.querySelector<HTMLElement>("#mobile-menu");
+  const openIcon = menuButton?.querySelector<HTMLElement>("[data-menu-open-icon]");
+  const closeIcon = menuButton?.querySelector<HTMLElement>("[data-menu-close-icon]");
+
+  function setMenuOpen(open: boolean) {
+    if (!menuButton || !mobileMenu) return;
+
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+    mobileMenu.classList.toggle("hidden", !open);
+    openIcon?.classList.toggle("hidden", open);
+    closeIcon?.classList.toggle("hidden", !open);
+    document.documentElement.classList.toggle("overflow-hidden", open);
+  }
+
+  menuButton?.addEventListener("click", () => {
+    setMenuOpen(menuButton.getAttribute("aria-expanded") !== "true");
+  });
+
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenuOpen(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setMenuOpen(false);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 1280) setMenuOpen(false);
+  });
+</script>

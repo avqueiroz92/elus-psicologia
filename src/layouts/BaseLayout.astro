@@ -2,7 +2,6 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import AnalyticsConsent from "../components/AnalyticsConsent.astro";
 import { site, whatsappLink } from "../config/site";
 
 type Props = {
@@ -50,20 +49,6 @@ const structuredData = {
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Atendimento psicológico online" } },
     ],
   },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "08:00",
-      closes: "18:00",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: "Saturday",
-      opens: "09:00",
-      closes: "13:00",
-    },
-  ],
   sameAs: [site.instagram],
 };
 ---
@@ -78,9 +63,11 @@ const structuredData = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <!-- Favicon ELUS. O parâmetro de versão evita que o navegador reutilize o ícone antigo em cache. -->
+    <link rel="icon" href="/favicon.ico?v=4" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico?v=4" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=4" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4" />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -103,9 +90,14 @@ const structuredData = {
     <Header />
     <slot />
     <Footer />
-    <AnalyticsConsent />
 
-    <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-[#338d83] px-5 py-3 text-sm font-bold text-white shadow-xl shadow-[#174442]/20 transition hover:-translate-y-0.5 hover:bg-[#185c58]" aria-label="Falar com a Elus Psicologia pelo WhatsApp">
+    <a
+      href={whatsappLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-4 right-4 z-40 inline-flex items-center gap-2 rounded-full bg-[#338d83] px-4 py-3 text-sm font-bold text-white shadow-xl shadow-[#174442]/20 transition hover:-translate-y-0.5 hover:bg-[#185c58] sm:bottom-5 sm:right-5 sm:px-5"
+      aria-label="Falar com a Elus Psicologia pelo WhatsApp"
+    >
       <span aria-hidden="true">💬</span>
       <span class="hidden sm:inline">Falar no WhatsApp</span>
     </a>
