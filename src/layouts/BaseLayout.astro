@@ -54,11 +54,11 @@ const structuredData = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Favicon oficial da ELUS. Manter estas URLs estáveis ajuda também o Google Search. -->
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <!-- Favicon ELUS com nomes versionados para evitar cache do favicon padrão do Astro -->
+    <link rel="icon" type="image/png" sizes="96x96" href="/elus-favicon-2026.png" />
+    <link rel="icon" type="image/x-icon" href="/elus-favicon-2026.ico" />
+    <link rel="shortcut icon" href="/elus-favicon-2026.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/elus-apple-touch-2026.png" />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
