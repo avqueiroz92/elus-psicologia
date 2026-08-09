@@ -8,13 +8,13 @@ const serviceItems = [
 ];
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 border-b border-[#e8ded6]/90 bg-[#fbf8f5]/95 backdrop-blur-xl">
+<header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-[#e8ded6]/90 bg-[#fbf8f5]/95 backdrop-blur-xl">
   <div class="container-elus flex min-h-16 items-center justify-between gap-3 sm:min-h-20">
     <a href="/" class="flex min-w-0 shrink-0 items-center" aria-label="Ir para o início da Elus Psicologia">
       <img
         src="/logo-elus.png"
         alt="Elus Psicologia"
-        class="h-12 w-auto max-w-[150px] object-contain sm:h-14 sm:max-w-[175px] xl:h-16"
+        class="h-[54px] w-auto max-w-[156px] object-contain sm:h-14 sm:max-w-[175px] xl:h-16"
         width="176"
         height="80"
         loading="eager"
@@ -36,10 +36,7 @@ const serviceItems = [
         <div class="absolute left-1/2 top-full w-72 -translate-x-1/2 pt-2">
           <div class="rounded-2xl border border-[#e8ded6] bg-white p-3 shadow-xl">
             {serviceItems.map((item) => (
-              <a
-                href={item.href}
-                class="block rounded-xl px-4 py-3 text-[#4e5c59] transition hover:bg-[#fbf8f5] hover:text-[#338d83]"
-              >
+              <a href={item.href} class="block rounded-xl px-4 py-3 text-[#4e5c59] transition hover:bg-[#fbf8f5] hover:text-[#338d83]">
                 {item.label}
               </a>
             ))}
@@ -64,7 +61,7 @@ const serviceItems = [
       <button
         id="mobile-menu-button"
         type="button"
-        class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#d9cec5] bg-white text-[#174442] shadow-sm transition hover:border-[#338d83]/60 hover:text-[#338d83] xl:hidden"
+        class="relative z-[53] inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#d9cec5] bg-white text-[#174442] shadow-sm transition active:scale-[0.97] xl:hidden"
         aria-label="Abrir menu"
         aria-controls="mobile-menu"
         aria-expanded="false"
@@ -80,80 +77,125 @@ const serviceItems = [
   </div>
 
   <div
+    id="mobile-menu-backdrop"
+    class="pointer-events-none invisible fixed inset-x-0 bottom-0 top-16 z-[51] bg-[#174442]/18 opacity-0 backdrop-blur-[2px] transition duration-200 sm:top-20 xl:hidden"
+    aria-hidden="true"
+  ></div>
+
+  <div
     id="mobile-menu"
-    class="fixed inset-x-0 bottom-0 top-16 hidden overflow-y-auto border-t border-[#e8ded6] bg-[#fbf8f5] shadow-xl sm:top-20 xl:hidden"
+    class="pointer-events-none invisible fixed inset-x-3 top-[72px] z-[52] max-h-[calc(100svh-84px)] translate-y-[-10px] overflow-y-auto rounded-[1.75rem] border border-[#e8ded6] bg-[#fbf8f5] p-3 opacity-0 shadow-2xl shadow-[#174442]/15 transition duration-200 sm:inset-x-5 sm:top-[88px] xl:hidden"
+    aria-hidden="true"
   >
-    <nav class="container-elus flex min-h-full flex-col py-5" aria-label="Navegação móvel">
-      <div class="flex flex-col gap-1">
-        <a href="/" class="rounded-xl px-4 py-3.5 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">Início</a>
-        <a href="/a-elus" class="rounded-xl px-4 py-3.5 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">A ELUS</a>
+    <nav class="flex flex-col" aria-label="Navegação móvel">
+      <a href="/" class="rounded-xl px-4 py-3.5 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">Início</a>
+      <a href="/a-elus" class="rounded-xl px-4 py-3.5 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">A ELUS</a>
 
-        <details class="group/mobile-services rounded-xl">
-          <summary class="flex cursor-pointer list-none items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">
-            Serviços
-            <svg class="h-5 w-5 transition group-open/mobile-services:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </summary>
+      <details class="group/mobile-services rounded-xl">
+        <summary class="flex min-h-12 cursor-pointer list-none items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">
+          Serviços
+          <svg class="h-5 w-5 transition group-open/mobile-services:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </summary>
 
-          <div class="ml-4 border-l-2 border-[#d7ebe8] py-1 pl-3">
-            {serviceItems.map((item) => (
-              <a
-                href={item.href}
-                class="block rounded-xl px-4 py-3 text-sm text-[#4e5c59] transition hover:bg-white hover:text-[#338d83]"
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </details>
+        <div class="mx-2 mb-1 border-l-2 border-[#d7ebe8] py-1 pl-2">
+          {serviceItems.map((item) => (
+            <a href={item.href} class="block rounded-xl px-4 py-3 text-sm text-[#4e5c59] transition hover:bg-white hover:text-[#338d83]">
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </details>
 
-        <a href="/sobre-jessica" class="rounded-xl px-4 py-3.5 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">Jéssica Albuquerque</a>
-        <a href="/#contato" class="rounded-xl px-4 py-3.5 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">Contato</a>
+      <a href="/sobre-jessica" class="rounded-xl px-4 py-3.5 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">Jéssica Albuquerque</a>
+      <a href="/#contato" class="rounded-xl px-4 py-3.5 text-base font-medium text-[#174442] transition hover:bg-white hover:text-[#338d83]">Contato</a>
+
+      <div class="mt-2 border-t border-[#e8ded6] pt-3">
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex min-h-13 items-center justify-center rounded-full bg-[#338d83] px-6 py-4 text-center text-sm font-bold text-white shadow-md shadow-[#338d83]/20 transition hover:bg-[#185c58]"
+        >
+          Consultar horários no WhatsApp
+        </a>
       </div>
-
-      <a
-        href={whatsappLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mt-5 rounded-full bg-[#338d83] px-6 py-4 text-center text-sm font-bold text-white shadow-md shadow-[#338d83]/20 transition hover:bg-[#185c58]"
-      >
-        Consultar horários no WhatsApp
-      </a>
     </nav>
   </div>
 </header>
 
 <script>
-  const menuButton = document.querySelector<HTMLButtonElement>("#mobile-menu-button");
-  const mobileMenu = document.querySelector<HTMLElement>("#mobile-menu");
-  const openIcon = menuButton?.querySelector<HTMLElement>("[data-menu-open-icon]");
-  const closeIcon = menuButton?.querySelector<HTMLElement>("[data-menu-close-icon]");
+  function initMobileMenu() {
+    const menuButton = document.querySelector<HTMLButtonElement>("#mobile-menu-button");
+    const mobileMenu = document.querySelector<HTMLElement>("#mobile-menu");
+    const backdrop = document.querySelector<HTMLElement>("#mobile-menu-backdrop");
 
-  function setMenuOpen(open: boolean) {
-    if (!menuButton || !mobileMenu) return;
+    if (!menuButton || !mobileMenu || !backdrop || menuButton.dataset.initialized === "true") return;
+    menuButton.dataset.initialized = "true";
 
-    menuButton.setAttribute("aria-expanded", String(open));
-    menuButton.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
-    mobileMenu.classList.toggle("hidden", !open);
-    openIcon?.classList.toggle("hidden", open);
-    closeIcon?.classList.toggle("hidden", !open);
-    document.documentElement.classList.toggle("menu-open", open);
+    const openIcon = menuButton.querySelector<HTMLElement>("[data-menu-open-icon]");
+    const closeIcon = menuButton.querySelector<HTMLElement>("[data-menu-close-icon]");
+    let lastFocused: HTMLElement | null = null;
+
+    const setMenuOpen = (open: boolean, restoreFocus = false) => {
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+      mobileMenu.setAttribute("aria-hidden", String(!open));
+      backdrop.setAttribute("aria-hidden", String(!open));
+
+      mobileMenu.classList.toggle("pointer-events-none", !open);
+      mobileMenu.classList.toggle("invisible", !open);
+      mobileMenu.classList.toggle("opacity-0", !open);
+      mobileMenu.classList.toggle("translate-y-[-10px]", !open);
+      mobileMenu.classList.toggle("pointer-events-auto", open);
+      mobileMenu.classList.toggle("visible", open);
+      mobileMenu.classList.toggle("opacity-100", open);
+      mobileMenu.classList.toggle("translate-y-0", open);
+
+      backdrop.classList.toggle("pointer-events-none", !open);
+      backdrop.classList.toggle("invisible", !open);
+      backdrop.classList.toggle("opacity-0", !open);
+      backdrop.classList.toggle("pointer-events-auto", open);
+      backdrop.classList.toggle("visible", open);
+      backdrop.classList.toggle("opacity-100", open);
+
+      openIcon?.classList.toggle("hidden", open);
+      closeIcon?.classList.toggle("hidden", !open);
+      document.documentElement.classList.toggle("menu-open", open);
+
+      if (open) {
+        lastFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+        window.setTimeout(() => mobileMenu.querySelector<HTMLElement>("a, summary")?.focus(), 30);
+      } else if (restoreFocus) {
+        (lastFocused ?? menuButton).focus();
+      }
+    };
+
+    menuButton.addEventListener("click", () => {
+      const willOpen = menuButton.getAttribute("aria-expanded") !== "true";
+      setMenuOpen(willOpen);
+    });
+
+    backdrop.addEventListener("click", () => setMenuOpen(false, true));
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setMenuOpen(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
+        setMenuOpen(false, true);
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 1280 && menuButton.getAttribute("aria-expanded") === "true") {
+        setMenuOpen(false);
+      }
+    });
   }
 
-  menuButton?.addEventListener("click", () => {
-    setMenuOpen(menuButton.getAttribute("aria-expanded") !== "true");
-  });
-
-  mobileMenu?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => setMenuOpen(false));
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") setMenuOpen(false);
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth >= 1280) setMenuOpen(false);
-  });
+  initMobileMenu();
+  document.addEventListener("astro:page-load", initMobileMenu);
 </script>

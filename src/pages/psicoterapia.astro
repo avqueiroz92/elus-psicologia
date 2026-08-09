@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { whatsappLink } from "../config/site";
+import { site, whatsappLink } from "../config/site";
 
 const supports = [
   "Ansiedade, sobrecarga e dificuldades emocionais.",
@@ -37,115 +37,139 @@ const faqs = [
 
 <BaseLayout
   title="Psicoterapia no Centro Metropolitano e Online | Elus Psicologia"
-  description="Psicoterapia para adultos, adolescentes e famílias, presencial no Centro Metropolitano, próximo à Barra da Tijuca e Barra Olímpica, e também online."
+  description="Psicoterapia para crianças, adolescentes e adultos, presencial no Centro Metropolitano, próximo à Barra da Tijuca e Barra Olímpica, e também online."
 >
-  <main class="pt-20">
-    <section class="container-elus grid items-center gap-12 py-16 md:grid-cols-[1.05fr_0.95fr] md:py-24">
+  <main class="pt-16 sm:pt-20">
+    <section class="container-elus grid items-center gap-7 py-7 sm:gap-10 sm:py-12 lg:grid-cols-[1.03fr_0.97fr] lg:gap-12 lg:py-20">
       <div>
-        <p class="mb-5 inline-flex rounded-full border border-[#e8ded6] bg-white px-4 py-2 text-sm font-medium text-[#338d83]">
+        <p class="mb-3 inline-flex rounded-full border border-[#e8ded6] bg-white px-3.5 py-2 text-[13px] font-medium text-[#338d83] sm:mb-5 sm:px-4 sm:text-sm">
           Psicoterapia presencial e online
         </p>
 
-        <h1 class="max-w-3xl text-5xl font-normal leading-tight tracking-tight text-[#174442] md:text-6xl">
-          Um espaço para compreender, elaborar e construir novos caminhos<span class="text-[#f4b3e1]">.</span>
+        <h1 class="hero-title-mobile max-w-3xl font-normal text-[#174442] md:text-6xl md:leading-tight">
+          Psicoterapia no Centro Metropolitano e online<span class="text-[#f4b3e1]">.</span>
         </h1>
 
-        <p class="mt-8 max-w-2xl text-base leading-8 text-[#6f7774] md:text-lg">
-          A psicoterapia é um processo de cuidado psicológico conduzido com escuta,
-          ética e respeito à singularidade de cada pessoa. Na ELUS, o atendimento é
-          realizado com clareza, acolhimento e responsabilidade técnica.
+        <p class="mt-5 max-w-2xl text-[15px] leading-7 text-[#6f7774] sm:mt-7 sm:text-base sm:leading-8 md:text-lg">
+          Atendimento com {site.professionalName}, Psicóloga, {site.crp}, para crianças, adolescentes e adultos, com escuta, ética e respeito à singularidade de cada pessoa.
         </p>
 
-        <div class="mt-9 flex flex-col gap-4 sm:flex-row">
-          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="rounded-full bg-[#338d83] px-7 py-4 text-center text-sm font-semibold text-white shadow-lg shadow-[#338d83]/20 transition hover:bg-[#185c58]">
-            Consultar horários
+        <div class="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
+          <a
+            data-primary-whatsapp-cta
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-full bg-[#338d83] px-7 py-4 text-center text-sm font-semibold text-white shadow-lg shadow-[#338d83]/20 transition hover:bg-[#185c58]"
+          >
+            Consultar horários no WhatsApp
           </a>
           <a href="#como-funciona" class="rounded-full border border-[#338d83]/50 bg-white px-7 py-4 text-center text-sm font-semibold text-[#338d83] transition hover:bg-[#f3eeea]">
             Como funciona
           </a>
         </div>
+
+        <div class="mt-5 flex flex-wrap gap-2 text-xs text-[#5d6865] sm:mt-7">
+          <span class="rounded-full border border-[#e8ded6] bg-white px-3 py-2">Centro Metropolitano</span>
+          <span class="rounded-full border border-[#e8ded6] bg-white px-3 py-2">Presencial e online</span>
+          <span class="rounded-full border border-[#e8ded6] bg-white px-3 py-2">Crianças a adultos</span>
+        </div>
       </div>
 
-      <div class="soft-shadow overflow-hidden rounded-[3rem] bg-[#f3eeea]">
-        <img src="/consultorio-adulto.jpg" alt="Consultório para psicoterapia da ELUS Psicologia" class="h-full min-h-[480px] w-full object-cover" loading="eager" />
-      </div>
+      <figure class="soft-shadow mt-2 overflow-hidden rounded-[1.75rem] bg-[#f3eeea] sm:rounded-[2.5rem] lg:mt-0">
+        <img
+          src="/consultorio-adulto.jpg"
+          alt="Consultório para psicoterapia da ELUS Psicologia"
+          class="aspect-[4/3] w-full object-cover sm:aspect-[5/4] lg:min-h-[500px]"
+          loading="eager"
+        />
+      </figure>
     </section>
 
-    <section class="border-y border-[#e8ded6] bg-white py-20">
-      <div class="container-elus grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+    <section class="mobile-section border-y border-[#e8ded6] bg-white py-20">
+      <div class="container-elus grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
         <div>
-          <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">Quando pode ajudar</p>
-          <h2 class="mt-4 text-4xl font-normal leading-tight text-[#174442] md:text-5xl">Demandas que podem ser acolhidas.</h2>
-          <div class="mt-5 h-1 w-16 rounded-full bg-[#f4b3e1]"></div>
+          <p class="text-xs font-bold uppercase tracking-[0.20em] text-[#338d83] sm:text-sm sm:tracking-[0.22em]">Quando pode ajudar</p>
+          <h2 class="mt-3 text-4xl font-normal leading-tight text-[#174442] md:mt-4 md:text-5xl">Demandas que podem ser acolhidas.</h2>
+          <div class="mt-4 h-1 w-16 rounded-full bg-[#f4b3e1] sm:mt-5"></div>
         </div>
 
-        <div class="grid gap-4 sm:grid-cols-2">
+        <div class="grid gap-3 sm:grid-cols-2 sm:gap-4">
           {supports.map((item) => (
-            <article class="rounded-[1.5rem] bg-[#fbf8f5] p-6">
-              <span class="text-xl text-[#338d83]">♡</span>
-              <p class="mt-3 text-sm leading-7 text-[#6f7774]">{item}</p>
+            <article class="flex items-start gap-3 rounded-[1.25rem] bg-[#fbf8f5] p-4 sm:block sm:rounded-[1.5rem] sm:p-6">
+              <span class="mt-0.5 text-xl text-[#338d83] sm:mt-0">♡</span>
+              <p class="text-sm leading-6 text-[#6f7774] sm:mt-3 sm:leading-7">{item}</p>
             </article>
           ))}
         </div>
       </div>
     </section>
 
-    <section id="como-funciona" class="bg-[#fbf8f5] py-20">
+    <section id="como-funciona" class="mobile-section bg-[#fbf8f5] py-20">
       <div class="container-elus">
         <div class="mx-auto max-w-2xl text-center">
-          <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">Como funciona</p>
-          <h2 class="mt-4 text-4xl font-normal text-[#174442] md:text-5xl">Do primeiro contato ao acompanhamento.</h2>
+          <p class="text-xs font-bold uppercase tracking-[0.20em] text-[#338d83] sm:text-sm sm:tracking-[0.22em]">Como funciona</p>
+          <h2 class="mt-3 text-4xl font-normal text-[#174442] md:mt-4 md:text-5xl">Do primeiro contato ao acompanhamento.</h2>
           <div class="mx-auto mt-4 h-1 w-16 rounded-full bg-[#f4b3e1]"></div>
         </div>
 
-        <div class="mt-14 grid gap-6 md:grid-cols-3">
-          <article class="card-border rounded-[1.75rem] bg-white p-8">
-            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#338d83] text-sm font-bold text-white">1</span>
-            <h3 class="mt-6 text-2xl font-normal text-[#174442]">Contato inicial</h3>
-            <p class="mt-4 text-sm leading-7 text-[#6f7774]">Você entra em contato pelo WhatsApp, informa a modalidade de interesse e consulta os horários disponíveis.</p>
+        <div class="mt-9 grid gap-4 sm:mt-14 sm:gap-6 md:grid-cols-3">
+          <article class="card-border rounded-[1.5rem] bg-white p-5 sm:rounded-[1.75rem] sm:p-8">
+            <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#338d83] text-sm font-bold text-white sm:h-10 sm:w-10">1</span>
+            <h3 class="mt-4 text-2xl font-normal text-[#174442] sm:mt-6">Contato inicial</h3>
+            <p class="mt-3 text-sm leading-6 text-[#6f7774] sm:mt-4 sm:leading-7">Você entra em contato pelo WhatsApp, informa a modalidade de interesse e consulta os horários disponíveis.</p>
           </article>
 
-          <article class="card-border rounded-[1.75rem] bg-white p-8">
-            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#338d83] text-sm font-bold text-white">2</span>
-            <h3 class="mt-6 text-2xl font-normal text-[#174442]">Primeira sessão</h3>
-            <p class="mt-4 text-sm leading-7 text-[#6f7774]">A conversa inicial permite compreender a demanda, conhecer a história e avaliar a forma mais adequada de cuidado.</p>
+          <article class="card-border rounded-[1.5rem] bg-white p-5 sm:rounded-[1.75rem] sm:p-8">
+            <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#338d83] text-sm font-bold text-white sm:h-10 sm:w-10">2</span>
+            <h3 class="mt-4 text-2xl font-normal text-[#174442] sm:mt-6">Primeira sessão</h3>
+            <p class="mt-3 text-sm leading-6 text-[#6f7774] sm:mt-4 sm:leading-7">A conversa inicial permite compreender a demanda, conhecer a história e avaliar a forma mais adequada de cuidado.</p>
           </article>
 
-          <article class="card-border rounded-[1.75rem] bg-white p-8">
-            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#338d83] text-sm font-bold text-white">3</span>
-            <h3 class="mt-6 text-2xl font-normal text-[#174442]">Processo terapêutico</h3>
-            <p class="mt-4 text-sm leading-7 text-[#6f7774]">Os encontros seguem objetivos construídos em conjunto, respeitando ritmo, necessidades e singularidades.</p>
+          <article class="card-border rounded-[1.5rem] bg-white p-5 sm:rounded-[1.75rem] sm:p-8">
+            <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#338d83] text-sm font-bold text-white sm:h-10 sm:w-10">3</span>
+            <h3 class="mt-4 text-2xl font-normal text-[#174442] sm:mt-6">Processo terapêutico</h3>
+            <p class="mt-3 text-sm leading-6 text-[#6f7774] sm:mt-4 sm:leading-7">Os encontros seguem objetivos construídos em conjunto, respeitando ritmo, necessidades e singularidades.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="bg-white py-20">
-      <div class="container-elus grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-        <div class="overflow-hidden rounded-[2rem] bg-[#f3eeea] soft-shadow">
-          <img src="/jessica-albuquerque.jpg" alt="Jéssica Albuquerque Vasconcelos, psicóloga responsável pela Elus Psicologia" class="h-full min-h-[500px] w-full object-cover object-top" loading="lazy" />
+    <section class="mobile-section bg-white py-20">
+      <div class="container-elus grid items-center gap-7 sm:gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div class="soft-shadow order-2 overflow-hidden rounded-[1.75rem] bg-[#f3eeea] sm:rounded-[2rem] lg:order-1">
+          <img
+            src="/jessica-albuquerque.jpg"
+            alt="Jéssica Albuquerque Vasconcelos, psicóloga responsável pela Elus Psicologia"
+            class="h-[320px] w-full object-cover object-top sm:min-h-[480px] lg:h-full"
+            loading="lazy"
+          />
         </div>
 
-        <div>
-          <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">Profissional responsável</p>
-          <h2 class="mt-4 text-4xl font-normal leading-tight text-[#174442] md:text-5xl">Cuidado conduzido com técnica e sensibilidade.</h2>
-          <p class="mt-7 text-base leading-8 text-[#6f7774]">Jéssica Albuquerque Vasconcelos é psicóloga clínica e neuropsicóloga. Atua com adultos, adolescentes, famílias e pessoas neurodivergentes, integrando escuta acolhedora, responsabilidade técnica e orientação parental.</p>
-          <a href="/sobre-jessica" class="mt-8 inline-flex rounded-full border border-[#338d83]/50 bg-white px-7 py-4 text-sm font-semibold text-[#338d83] transition hover:bg-[#f3eeea]">Conhecer a trajetória da Jéssica</a>
+        <div class="order-1 lg:order-2">
+          <p class="text-xs font-bold uppercase tracking-[0.20em] text-[#338d83] sm:text-sm sm:tracking-[0.22em]">Profissional responsável</p>
+          <h2 class="mt-3 text-4xl font-normal leading-tight text-[#174442] md:mt-4 md:text-5xl">Cuidado conduzido com técnica e sensibilidade.</h2>
+          <p class="mt-5 text-[15px] leading-7 text-[#6f7774] sm:mt-7 sm:text-base sm:leading-8">Jéssica Albuquerque Vasconcelos é psicóloga clínica e neuropsicóloga. Atua com crianças, adolescentes, adultos, famílias e pessoas neurodivergentes, integrando escuta acolhedora, responsabilidade técnica e orientação parental.</p>
+          <p class="mt-3 text-sm font-medium text-[#338d83]">{site.crp}</p>
+          <a href="/sobre-jessica" class="mt-6 inline-flex rounded-full border border-[#338d83]/50 bg-white px-7 py-4 text-sm font-semibold text-[#338d83] transition hover:bg-[#f3eeea] sm:mt-8">Conhecer a trajetória da Jéssica</a>
         </div>
       </div>
     </section>
 
-    <section class="bg-[#fbf8f5] py-20">
+    <section class="mobile-section bg-[#fbf8f5] py-20">
       <div class="container-elus">
         <div class="mx-auto max-w-2xl text-center">
-          <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">Dúvidas frequentes</p>
-          <h2 class="mt-4 text-4xl font-normal text-[#174442] md:text-5xl">Antes de iniciar.</h2>
+          <p class="text-xs font-bold uppercase tracking-[0.20em] text-[#338d83] sm:text-sm sm:tracking-[0.22em]">Dúvidas frequentes</p>
+          <h2 class="mt-3 text-4xl font-normal text-[#174442] md:mt-4 md:text-5xl">Antes de iniciar.</h2>
         </div>
 
-        <div class="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-2">
+        <div class="mx-auto mt-8 grid max-w-5xl gap-3 sm:mt-12 sm:gap-4 md:grid-cols-2">
           {faqs.map((faq) => (
             <details class="rounded-[1.25rem] border border-[#e8ded6] bg-white p-5 shadow-sm">
-              <summary class="cursor-pointer list-none font-semibold text-[#174442]">{faq.question}</summary>
+              <summary class="flex min-h-8 cursor-pointer list-none items-center justify-between gap-4 font-semibold text-[#174442]">
+                {faq.question}
+                <span class="text-xl font-normal text-[#338d83]" aria-hidden="true">+</span>
+              </summary>
               <p class="mt-4 text-sm leading-7 text-[#6f7774]">{faq.answer}</p>
             </details>
           ))}
@@ -153,15 +177,15 @@ const faqs = [
       </div>
     </section>
 
-    <section class="bg-white pb-20">
+    <section class="bg-white pb-12 sm:pb-20">
       <div class="container-elus">
-        <div class="relative overflow-hidden rounded-[2rem] bg-[#338d83] p-9 text-white md:p-12">
-          <div class="relative flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+        <div class="relative overflow-hidden rounded-[1.75rem] bg-[#338d83] p-7 text-white sm:rounded-[2rem] sm:p-9 md:p-12">
+          <div class="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center md:gap-8">
             <div>
               <h2 class="text-4xl font-normal">Quer conversar sobre psicoterapia?</h2>
-              <p class="mt-3 max-w-xl text-white/85">Entre em contato para tirar dúvidas e consultar a disponibilidade de horários.</p>
+              <p class="mt-3 max-w-xl text-sm leading-6 text-white/85 sm:text-base sm:leading-7">Entre em contato para tirar dúvidas e consultar a disponibilidade de horários.</p>
             </div>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="rounded-full bg-white px-7 py-4 text-sm font-bold text-[#338d83] transition hover:bg-[#f3eeea]">Falar com a ELUS</a>
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="w-full rounded-full bg-white px-7 py-4 text-center text-sm font-bold text-[#338d83] transition hover:bg-[#f3eeea] sm:w-auto">Falar com a ELUS</a>
           </div>
         </div>
       </div>
