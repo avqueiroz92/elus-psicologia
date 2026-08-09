@@ -40,15 +40,6 @@ const structuredData = {
     name: site.professionalName,
     jobTitle: "Psicóloga clínica e neuropsicóloga",
   },
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Serviços psicológicos",
-    itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Psicoterapia" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Avaliação Neuropsicológica" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Atendimento psicológico online" } },
-    ],
-  },
   sameAs: [site.instagram],
 };
 ---
@@ -57,17 +48,17 @@ const structuredData = {
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Favicon ELUS. O parâmetro de versão evita que o navegador reutilize o ícone antigo em cache. -->
-    <link rel="icon" href="/favicon.ico?v=4" sizes="any" />
-    <link rel="shortcut icon" href="/favicon.ico?v=4" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=4" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4" />
+    <!-- Favicon oficial da ELUS. Manter estas URLs estáveis ajuda também o Google Search. -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -77,11 +68,7 @@ const structuredData = {
     <meta property="og:image" content={logoURL.href} />
     <meta property="og:locale" content="pt_BR" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={logoURL.href} />
-    <meta name="theme-color" content="#338d83" />
+    <meta name="theme-color" content="#fbf8f5" />
 
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
@@ -95,7 +82,7 @@ const structuredData = {
       href={whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
-      class="fixed bottom-4 right-4 z-40 inline-flex items-center gap-2 rounded-full bg-[#338d83] px-4 py-3 text-sm font-bold text-white shadow-xl shadow-[#174442]/20 transition hover:-translate-y-0.5 hover:bg-[#185c58] sm:bottom-5 sm:right-5 sm:px-5"
+      class="floating-whatsapp fixed right-4 z-40 inline-flex items-center gap-2 rounded-full bg-[#338d83] px-4 py-3 text-sm font-bold text-white shadow-xl shadow-[#174442]/20 transition hover:-translate-y-0.5 hover:bg-[#185c58] sm:right-5 sm:px-5"
       aria-label="Falar com a Elus Psicologia pelo WhatsApp"
     >
       <span aria-hidden="true">💬</span>
