@@ -1,6 +1,14 @@
 ---
 import { site, whatsappLink } from "../config/site";
 
+type Props = {
+  whatsappHref?: string;
+  whatsappService?: string;
+};
+
+const activeWhatsappLink = Astro.props.whatsappHref ?? whatsappLink;
+const whatsappService = Astro.props.whatsappService ?? "general";
+
 const phoneDigits = String(site.phone).replace(/\D/g, "");
 const nationalPhone = phoneDigits.startsWith("55") ? phoneDigits.slice(2) : phoneDigits;
 const phoneDisplay = nationalPhone.length === 11
@@ -24,7 +32,7 @@ const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
     <div>
       <h3 class="font-semibold text-[#174442]">Contato</h3>
       <ul class="mt-4 space-y-3 text-sm leading-6 text-[#6f7774]">
-        <li><a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="transition hover:text-[#338d83]">WhatsApp: {phoneDisplay}</a></li>
+        <li><a data-whatsapp-cta data-cta-location="footer" data-service={whatsappService} href={activeWhatsappLink} target="_blank" rel="noopener noreferrer" class="transition hover:text-[#338d83]">WhatsApp: {phoneDisplay}</a></li>
         <li><a href={`mailto:${site.email}`} class="transition hover:text-[#338d83]">{site.email}</a></li>
         <li><a href={mapsLink} target="_blank" rel="noopener noreferrer" class="transition hover:text-[#338d83]">{site.placeName}<br />{site.location}</a></li>
         <li>Atendimento presencial e online, mediante agendamento.</li>

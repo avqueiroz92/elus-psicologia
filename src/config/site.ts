@@ -22,6 +22,17 @@ export const site = {
     "Olá, vim pelo site da Elus Psicologia e gostaria de saber mais sobre os atendimentos.",
 };
 
-export const whatsappLink = `https://wa.me/${site.phone}?text=${encodeURIComponent(
-  site.whatsappMessage
-)}`;
+export const whatsappMessages = {
+  general: site.whatsappMessage,
+  psicoterapia:
+    "Olá, vim pela página de Psicoterapia da ELUS e gostaria de consultar os horários disponíveis para atendimento.",
+  avaliacaoNeuropsicologica:
+    "Olá, vim pela página de Avaliação Neuropsicológica da ELUS e gostaria de entender melhor o processo e consultar disponibilidade.",
+};
+
+export const buildWhatsAppLink = (message: string) =>
+  `https://wa.me/${site.phone}?text=${encodeURIComponent(message)}`;
+
+export const whatsappLink = buildWhatsAppLink(whatsappMessages.general);
+export const psicoterapiaWhatsappLink = buildWhatsAppLink(whatsappMessages.psicoterapia);
+export const avaliacaoWhatsappLink = buildWhatsAppLink(whatsappMessages.avaliacaoNeuropsicologica);

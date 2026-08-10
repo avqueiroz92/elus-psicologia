@@ -8,10 +8,16 @@ import { site, whatsappLink } from "../config/site";
 type Props = {
   title?: string;
   description?: string;
+  whatsappHref?: string;
+  whatsappService?: string;
+  whatsappLabel?: string;
 };
 
 const title = Astro.props.title ?? site.title;
 const description = Astro.props.description ?? site.description;
+const activeWhatsappLink = Astro.props.whatsappHref ?? whatsappLink;
+const whatsappService = Astro.props.whatsappService ?? "general";
+const whatsappLabel = Astro.props.whatsappLabel ?? "Falar no WhatsApp";
 const canonicalURL = new URL(Astro.url.pathname, site.url);
 const logoURL = new URL("/images/elus/brand/logo-elus-transparent.png", site.url);
 const phoneDigits = String(site.phone).replace(/\D/g, "");
@@ -74,39 +80,45 @@ const structuredData = {
   </head>
 
   <body>
-    <Header />
+    <Header whatsappHref={activeWhatsappLink} whatsappService={whatsappService} />
     <slot />
-    <Footer />
+    <Footer whatsappHref={activeWhatsappLink} whatsappService={whatsappService} />
     <AnalyticsConsent />
 
     <a
-      href={whatsappLink}
+      href={activeWhatsappLink}
       target="_blank"
       rel="noopener noreferrer"
+      data-whatsapp-cta
+      data-cta-location="floating_desktop"
+      data-service={whatsappService}
       class="floating-whatsapp fixed right-5 z-40 hidden items-center gap-2 rounded-full bg-[#338d83] px-5 py-3 text-sm font-bold text-white shadow-xl shadow-[#174442]/20 transition hover:-translate-y-0.5 hover:bg-[#185c58] sm:inline-flex"
-      aria-label="Falar com a Elus Psicologia pelo WhatsApp"
+      aria-label={`${whatsappLabel} — Elus Psicologia`}
     >
       <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
         <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.45L3 20.5l1.55-5.15A8.5 8.5 0 1 1 21 11.5Z" stroke-linecap="round" stroke-linejoin="round" />
         <path d="M8.4 8.3c.35 2.7 2.55 4.9 5.3 5.3" stroke-linecap="round" />
       </svg>
-      <span>Falar no WhatsApp</span>
+      <span>{whatsappLabel}</span>
     </a>
 
     <a
       id="mobile-whatsapp-sticky"
-      href={whatsappLink}
+      href={activeWhatsappLink}
       target="_blank"
       rel="noopener noreferrer"
-      class="mobile-whatsapp-sticky pointer-events-none fixed inset-x-3 z-40 flex translate-y-4 items-center justify-center gap-2 rounded-full bg-[#338d83] px-5 py-4 text-sm font-bold text-white opacity-0 shadow-2xl shadow-[#174442]/25 transition duration-200 sm:hidden"
-      aria-label="Consultar horários com a Elus Psicologia pelo WhatsApp"
+      data-whatsapp-cta
+      data-cta-location="sticky_mobile"
+      data-service={whatsappService}
+      class="mobile-whatsapp-sticky pointer-events-none fixed inset-x-7 z-40 flex translate-y-4 items-center justify-center gap-2 rounded-full bg-[#338d83] px-4 py-3 text-[13px] font-bold text-white opacity-0 shadow-xl shadow-[#174442]/20 transition duration-200 sm:hidden"
+      aria-label={`${whatsappLabel} — Elus Psicologia`}
       aria-hidden="true"
     >
       <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
         <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.45L3 20.5l1.55-5.15A8.5 8.5 0 1 1 21 11.5Z" stroke-linecap="round" stroke-linejoin="round" />
         <path d="M8.4 8.3c.35 2.7 2.55 4.9 5.3 5.3" stroke-linecap="round" />
       </svg>
-      Consultar horários no WhatsApp
+      {whatsappLabel}
     </a>
 
     <div class="h-20 sm:hidden" aria-hidden="true"></div>
@@ -117,8 +129,13 @@ const structuredData = {
         if (!sticky || sticky.dataset.initialized === "true") return;
         sticky.dataset.initialized = "true";
 
-        const primary = document.querySelector<HTMLElement>("[data-primary-whatsapp-cta]");
-        let primaryVisible = Boolean(primary);
+        const inlineCtas = Array.from(
+          document.querySelectorAll<HTMLElement>("main [data-whatsapp-cta]")
+        );
+        let inlineCtaVisible = inlineCtas.some((cta) => {
+          const rect = cta.getBoundingClientRect();
+          return rect.top < window.innerHeight && rect.bottom > 0;
+        });
 
         const setSticky = (show: boolean) => {
           const canShow = show && !document.documentElement.classList.contains("menu-open");
@@ -136,19 +153,25 @@ const structuredData = {
             setSticky(false);
             return;
           }
-          const enoughScroll = window.scrollY > (primary ? 160 : 360);
-          setSticky(enoughScroll && !primaryVisible);
+          const enoughScroll = window.scrollY > 180;
+          setSticky(enoughScroll && !inlineCtaVisible);
         };
 
-        if (primary) {
+        if (inlineCtas.length) {
+          const visibility = new Map<HTMLElement, boolean>();
+          inlineCtas.forEach((cta) => visibility.set(cta, false));
+
           const observer = new IntersectionObserver(
             (entries) => {
-              primaryVisible = entries[0]?.isIntersecting ?? false;
+              entries.forEach((entry) => {
+                visibility.set(entry.target as HTMLElement, entry.isIntersecting);
+              });
+              inlineCtaVisible = Array.from(visibility.values()).some(Boolean);
               update();
             },
-            { threshold: 0.35 }
+            { threshold: 0.25 }
           );
-          observer.observe(primary);
+          inlineCtas.forEach((cta) => observer.observe(cta));
         }
 
         window.addEventListener("scroll", update, { passive: true });

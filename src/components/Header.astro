@@ -1,6 +1,14 @@
 ---
 import { whatsappLink } from "../config/site";
 
+type Props = {
+  whatsappHref?: string;
+  whatsappService?: string;
+};
+
+const activeWhatsappLink = Astro.props.whatsappHref ?? whatsappLink;
+const whatsappService = Astro.props.whatsappService ?? "general";
+
 const serviceItems = [
   { label: "Psicoterapia", href: "/psicoterapia" },
   { label: "Avaliação Neuropsicológica", href: "/avaliacao-neuropsicologica" },
@@ -50,7 +58,10 @@ const serviceItems = [
 
     <div class="flex shrink-0 items-center gap-2">
       <a
-        href={whatsappLink}
+        href={activeWhatsappLink}
+        data-whatsapp-cta
+        data-cta-location="header_desktop"
+        data-service={whatsappService}
         target="_blank"
         rel="noopener noreferrer"
         class="hidden rounded-full bg-[#338d83] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-[#338d83]/20 transition hover:bg-[#185c58] xl:inline-flex"
@@ -113,7 +124,10 @@ const serviceItems = [
 
       <div class="mt-2 border-t border-[#e8ded6] pt-3">
         <a
-          href={whatsappLink}
+          href={activeWhatsappLink}
+          data-whatsapp-cta
+          data-cta-location="header_mobile"
+          data-service={whatsappService}
           target="_blank"
           rel="noopener noreferrer"
           class="flex min-h-13 items-center justify-center rounded-full bg-[#338d83] px-6 py-4 text-center text-sm font-bold text-white shadow-md shadow-[#338d83]/20 transition hover:bg-[#185c58]"

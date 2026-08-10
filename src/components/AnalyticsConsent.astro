@@ -53,6 +53,52 @@ const measurementId = site.analyticsMeasurementId;
     consentBox?.classList.remove("hidden");
   }
 
+  const CAMPAIGN_KEY = "elus-campaign-attribution";
+  const CAMPAIGN_PARAMS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "gbraid", "wbraid"];
+
+  function captureCampaignAttribution() {
+    if (localStorage.getItem(CONSENT_KEY) !== "accepted") return;
+
+    const params = new URLSearchParams(window.location.search);
+    const current: Record<string, string> = {};
+    CAMPAIGN_PARAMS.forEach((key) => {
+      const value = params.get(key);
+      if (value) current[key] = value.slice(0, 200);
+    });
+
+    if (Object.keys(current).length) {
+      current.landing_page = window.location.pathname;
+      current.captured_at = new Date().toISOString();
+      sessionStorage.setItem(CAMPAIGN_KEY, JSON.stringify(current));
+    }
+  }
+
+  function getCampaignAttribution(): Record<string, string> {
+    try {
+      return JSON.parse(sessionStorage.getItem(CAMPAIGN_KEY) || "{}");
+    } catch {
+      return {};
+    }
+  }
+
+  function inferService(anchor: HTMLAnchorElement) {
+    const explicit = anchor.dataset.service;
+    if (explicit) return explicit;
+
+    const path = window.location.pathname;
+    if (path.includes("/psicoterapia")) return "psicoterapia";
+    if (path.includes("/avaliacao-neuropsicologica")) return "avaliacao_neuropsicologica";
+    if (path.includes("/atendimento-online")) return "atendimento_online";
+    return "general";
+  }
+
+  function inferCtaLocation(anchor: HTMLAnchorElement) {
+    if (anchor.dataset.ctaLocation) return anchor.dataset.ctaLocation;
+    if (anchor.closest("header")) return "header";
+    if (anchor.closest("footer")) return "footer";
+    return "inline_unspecified";
+  }
+
   function loadAnalytics() {
     if (!PRODUCTION_HOSTS.includes(window.location.hostname)) return;
     if (window.__elusAnalyticsLoaded) return;
@@ -72,16 +118,23 @@ const measurementId = site.analyticsMeasurementId;
     window.gtag("config", measurementId, {
       send_page_view: true,
     });
+    captureCampaignAttribution();
   }
 
-  function trackContactEvent(eventName, anchor) {
+  function trackContactEvent(eventName: string, anchor: HTMLAnchorElement) {
     if (localStorage.getItem(CONSENT_KEY) !== "accepted") return;
     if (typeof window.gtag !== "function") return;
+
+    const campaign = getCampaignAttribution();
 
     window.gtag("event", eventName, {
       link_url: anchor.href,
       link_text: (anchor.textContent || anchor.getAttribute("aria-label") || "").trim().slice(0, 100),
       page_path: window.location.pathname,
+      page_title: document.title,
+      cta_location: inferCtaLocation(anchor),
+      service: inferService(anchor),
+      ...campaign,
     });
   }
 
@@ -122,10 +175,12 @@ const measurementId = site.analyticsMeasurementId;
     localStorage.setItem(CONSENT_KEY, "accepted");
     hideConsentBox();
     loadAnalytics();
+    captureCampaignAttribution();
   });
 
   rejectButton?.addEventListener("click", () => {
     localStorage.setItem(CONSENT_KEY, "rejected");
+    sessionStorage.removeItem(CAMPAIGN_KEY);
     hideConsentBox();
   });
 

@@ -126,6 +126,7 @@ import { site } from "../config/site";
   <script>
     document.getElementById("reset-analytics-consent")?.addEventListener("click", () => {
       localStorage.removeItem("elus-analytics-consent");
+      sessionStorage.removeItem("elus-campaign-attribution");
       window.location.reload();
     });
   </script>

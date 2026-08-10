@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { site, whatsappLink } from "../config/site";
+import { site, avaliacaoWhatsappLink } from "../config/site";
 
 const indications = [
   {
@@ -103,30 +103,34 @@ const faqs = [
 <BaseLayout
   title="Avaliação Neuropsicológica no Centro Metropolitano | Elus Psicologia"
   description="Avaliação neuropsicológica para crianças, adolescentes e adultos no Centro Metropolitano, próximo à Barra da Tijuca e Barra Olímpica."
+  whatsappHref={avaliacaoWhatsappLink}
+  whatsappService="avaliacao_neuropsicologica"
+  whatsappLabel="Consultar avaliação"
 >
   <main class="pt-16 sm:pt-20">
-    <section class="container-elus grid items-center gap-12 py-16 md:grid-cols-[0.95fr_1.05fr] md:py-24">
+    <section class="container-elus grid items-center gap-7 py-7 sm:gap-10 sm:py-12 md:grid-cols-[0.95fr_1.05fr] md:py-24">
       <div>
-        <p class="mb-5 inline-flex rounded-full border border-[#e8ded6] bg-white px-4 py-2 text-sm font-medium text-[#bfa5ed]">
-          Avaliação Neuropsicológica
+        <p class="mb-3 inline-flex rounded-full border border-[#e8ded6] bg-white px-3.5 py-2 text-[13px] font-medium text-[#bfa5ed] sm:mb-5 sm:px-4 sm:text-sm">
+          Avaliação neuropsicológica • Centro Metropolitano
         </p>
 
-        <h1 class="max-w-3xl text-5xl font-normal leading-tight tracking-tight text-[#174442] md:text-6xl">
-          Compreender para cuidar com mais clareza e propósito<span class="text-[#f4b3e1]">.</span>
+        <h1 class="hero-title-mobile max-w-3xl font-normal text-[#174442] md:text-6xl md:leading-tight">
+          Avaliação neuropsicológica para crianças, adolescentes e adultos<span class="text-[#f4b3e1]">.</span>
         </h1>
 
-        <div class="mt-5 h-3 w-32 rounded-full border-b-2 border-[#f4b3e1]"></div>
+        <div class="mt-4 h-2 w-24 rounded-full border-b-2 border-[#f4b3e1] sm:mt-5 sm:h-3 sm:w-32"></div>
 
-        <p class="mt-8 max-w-2xl text-base leading-8 text-[#6f7774] md:text-lg">
-          A avaliação neuropsicológica investiga funções cognitivas, emocionais e
-          comportamentais para compreender dificuldades e potencialidades. O atendimento
-          acontece no Centro Metropolitano, com localização próxima à Barra da Tijuca, Barra Olímpica e aos bairros da região.
+        <p class="mt-5 max-w-2xl text-[15px] leading-7 text-[#6f7774] sm:mt-7 sm:text-base sm:leading-8 md:text-lg">
+          Investiga atenção, memória, aprendizagem, funções executivas e aspectos emocionais e comportamentais para compreender dificuldades e potencialidades. O processo é conduzido por {site.professionalName}, psicóloga e neuropsicóloga, {site.crp}, no Centro Metropolitano.
         </p>
 
-        <div class="mt-9 flex flex-col gap-4 sm:flex-row">
+        <div class="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
           <a
             data-primary-whatsapp-cta
-            href={whatsappLink}
+            data-whatsapp-cta
+            data-cta-location="hero"
+            data-service="avaliacao_neuropsicologica"
+            href={avaliacaoWhatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             class="rounded-full bg-[#338d83] px-7 py-4 text-center text-sm font-semibold text-white shadow-lg shadow-[#338d83]/20 transition hover:bg-[#185c58]"
@@ -142,22 +146,26 @@ const faqs = [
           </a>
         </div>
 
-        <div class="mt-12 grid gap-5 text-sm text-[#5d6865] sm:grid-cols-3">
-          <div class="flex items-center gap-3">
-            <span class="text-2xl text-[#338d83]">♢</span>
-            <span>Sigilo e ética profissional</span>
+        <div class="mt-7 grid gap-3 text-sm text-[#5d6865] sm:mt-10 sm:grid-cols-3 sm:gap-5">
+          <div class="flex items-center gap-3 rounded-[1.1rem] bg-white px-4 py-3 sm:bg-transparent sm:px-0 sm:py-0">
+            <span class="text-xl text-[#338d83]">👥</span>
+            <span>Crianças, adolescentes e adultos</span>
           </div>
 
-          <div class="flex items-center gap-3 border-[#e8ded6] sm:border-l sm:pl-5">
-            <span class="text-2xl text-[#338d83]">□</span>
-            <span>Instrumentos adequados</span>
+          <div class="flex items-center gap-3 rounded-[1.1rem] bg-white px-4 py-3 sm:rounded-none sm:border-l sm:border-[#e8ded6] sm:bg-transparent sm:px-5 sm:py-0">
+            <span class="text-xl text-[#338d83]">□</span>
+            <span>Entrevista e instrumentos adequados ao caso</span>
           </div>
 
-          <div class="flex items-center gap-3 border-[#e8ded6] sm:border-l sm:pl-5">
-            <span class="text-2xl text-[#338d83]">♡</span>
-            <span>Devolutiva clara e acolhedora</span>
+          <div class="flex items-center gap-3 rounded-[1.1rem] bg-white px-4 py-3 sm:rounded-none sm:border-l sm:border-[#e8ded6] sm:bg-transparent sm:px-5 sm:py-0">
+            <span class="text-xl text-[#338d83]">♡</span>
+            <span>Devolutiva e documento psicológico conforme indicação técnica</span>
           </div>
         </div>
+
+        <p class="mt-5 max-w-2xl text-xs leading-5 text-[#6f7774] sm:text-sm sm:leading-6">
+          O número de encontros e as etapas necessárias variam conforme idade, demanda e objetivos da avaliação e são alinhados após a entrevista inicial.
+        </p>
       </div>
 
       <div class="soft-shadow overflow-hidden rounded-[3rem] bg-[#f3eeea]">
@@ -362,12 +370,15 @@ const faqs = [
         </div>
 
         <a
-          href={whatsappLink}
+          data-whatsapp-cta
+          data-cta-location="final"
+          data-service="avaliacao_neuropsicologica"
+          href={avaliacaoWhatsappLink}
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-[#338d83] transition hover:bg-[#f3eeea]"
         >
-          💬 Agendar conversa
+          💬 Consultar avaliação
         </a>
       </div>
     </div>
