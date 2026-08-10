@@ -8,7 +8,7 @@ const spaces = [
   {
     title: "Recepção",
     subtitle: "Uma chegada mais tranquila.",
-    image: "/espaco-recepcao-card.jpg",
+    image: "/images/elus/espaco/recepcao.webp",
     alt: "Recepção da ELUS Psicologia com poltronas, plantas e identidade visual da clínica",
     description:
       "Um ambiente organizado e acolhedor para a chegada e a espera antes do atendimento.",
@@ -16,7 +16,7 @@ const spaces = [
   {
     title: "Consultório",
     subtitle: "Privacidade e conforto.",
-    image: "/consultorio-adulto-card.jpg",
+    image: "/images/elus/espaco/consultorio-adulto.webp",
     alt: "Consultório da ELUS Psicologia preparado para psicoterapia e avaliação",
     description:
       "Espaço reservado para psicoterapia, conversas e avaliações com privacidade e cuidado.",
@@ -24,7 +24,7 @@ const spaces = [
   {
     title: "Espaço infantil",
     subtitle: "Cuidado também pelo brincar.",
-    image: "/espaco-infantil-card.jpg",
+    image: "/images/elus/espaco/espaco-infantil.webp",
     alt: "Espaço infantil da ELUS Psicologia com mesa, brinquedos e decoração lúdica",
     description:
       "Ambiente lúdico e preparado para acolher crianças durante o processo de cuidado.",
@@ -76,10 +76,13 @@ const spaces = [
 
       <figure class="soft-shadow overflow-hidden rounded-[2.5rem] bg-[#f3eeea]">
         <img
-          src="/consultorio-adulto-hero.jpg"
-          alt="Consultório da ELUS Psicologia no Centro Metropolitano"
-          class="aspect-[4/3] h-full w-full object-cover"
+          src="/images/elus/espaco/acolhimento-janela.webp"
+          alt="Ambiente da ELUS Psicologia no Centro Metropolitano com luz natural"
+          class="aspect-[4/3] h-full w-full object-cover object-center"
+          width="1200"
+          height="800"
           loading="eager"
+          fetchpriority="high"
         />
       </figure>
     </section>
@@ -105,8 +108,11 @@ const spaces = [
                 <img
                   src={space.image}
                   alt={space.alt}
-                  class="aspect-[3/4] w-full object-cover"
+                  class="aspect-[4/3] w-full object-cover object-center"
+                  width="1200"
+                  height="900"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
 
