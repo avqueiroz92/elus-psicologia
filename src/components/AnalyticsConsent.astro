@@ -86,6 +86,7 @@ const measurementId = site.analyticsMeasurementId;
     if (explicit) return explicit;
 
     const path = window.location.pathname;
+    if (path.includes("/psicoterapia-infantil")) return "psicoterapia_infantil";
     if (path.includes("/psicoterapia")) return "psicoterapia";
     if (path.includes("/avaliacao-neuropsicologica")) return "avaliacao_neuropsicologica";
     if (path.includes("/atendimento-online")) return "atendimento_online";

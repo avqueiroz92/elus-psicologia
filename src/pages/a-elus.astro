@@ -28,6 +28,8 @@ const spaces = [
     alt: "Espaço infantil da ELUS Psicologia com mesa, brinquedos e decoração lúdica",
     description:
       "Ambiente lúdico e preparado para acolher crianças durante o processo de cuidado.",
+    href: "/psicoterapia-infantil",
+    linkLabel: "Conhecer a psicoterapia infantil →",
   },
 ];
 ---
@@ -130,6 +132,11 @@ const spaces = [
                 <p class="mt-4 text-sm leading-7 text-[#6f7774]">
                   {space.description}
                 </p>
+                {space.href && (
+                  <a href={space.href} class="mt-5 inline-flex text-sm font-semibold text-[#338d83]">
+                    {space.linkLabel}
+                  </a>
+                )}
               </div>
             </article>
           ))}

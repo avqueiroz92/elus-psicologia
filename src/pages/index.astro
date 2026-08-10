@@ -11,6 +11,13 @@ const services = [
     description: "Um processo de cuidado para compreender emoções, relações e experiências com acolhimento e clareza.",
   },
   {
+    title: "Psicoterapia Infantil",
+    icon: "✦",
+    color: "bg-[#f4b3e1]",
+    href: "/psicoterapia-infantil",
+    description: "Acompanhamento psicológico infantil com recursos adequados à faixa etária e participação dos responsáveis quando indicada.",
+  },
+  {
     title: "Avaliação Neuropsicológica",
     icon: "📋",
     color: "bg-[#bfa5ed]",
@@ -20,7 +27,7 @@ const services = [
   {
     title: "Atendimento Online",
     icon: "◉",
-    color: "bg-[#f4b3e1]",
+    color: "bg-[#4e7cc6]",
     href: "/atendimento-online",
     description: "Psicoterapia por videochamada, com sigilo, flexibilidade e avaliação da adequação para cada caso.",
   },
@@ -35,7 +42,7 @@ const steps = [
 
 <BaseLayout
   title="Elus Psicologia | Psicoterapia no Centro Metropolitano e Online"
-  description="Psicoterapia e avaliação neuropsicológica com Jéssica Albuquerque Vasconcelos no Centro Metropolitano, próximo à Barra da Tijuca e Barra Olímpica."
+  description="Psicoterapia, psicoterapia infantil e avaliação neuropsicológica com Jéssica Albuquerque Vasconcelos no Centro Metropolitano, próximo à Barra da Tijuca e Barra Olímpica."
 >
   <main id="inicio" class="pt-16 sm:pt-20">
     <section class="container-elus grid min-h-[calc(100svh-64px)] items-center gap-8 py-7 sm:min-h-0 sm:py-12 lg:min-h-[calc(100vh-80px)] lg:grid-cols-[0.95fr_1.05fr] lg:gap-12 lg:py-20">
@@ -106,7 +113,7 @@ const steps = [
           <div class="mx-auto mt-4 h-1 w-16 rounded-full bg-[#f4b3e1]"></div>
         </div>
 
-        <div class="mt-9 grid gap-4 sm:mt-12 sm:gap-6 md:grid-cols-3">
+        <div class="mt-9 grid gap-4 sm:mt-12 sm:gap-6 md:grid-cols-2 xl:grid-cols-4">
           {services.map((service) => (
             <article class="card-border soft-shadow rounded-[1.5rem] bg-white p-6 text-left transition hover:-translate-y-1 sm:rounded-[1.75rem] sm:p-8 sm:text-center">
               <div class={`flex h-14 w-14 items-center justify-center rounded-full ${service.color} text-2xl text-white sm:mx-auto sm:h-20 sm:w-20 sm:text-3xl`}>{service.icon}</div>

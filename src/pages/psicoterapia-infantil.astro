@@ -1,0 +1,298 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site, psicoterapiaInfantilWhatsappLink } from "../config/site";
+
+const supports = [
+  "Mudanças de comportamento, irritabilidade, medos ou ansiedade.",
+  "Dificuldade para expressar emoções ou lidar com frustrações.",
+  "Adaptação a mudanças familiares, escolares ou de rotina.",
+  "Dificuldades de relacionamento, socialização ou autoestima.",
+  "Sofrimento relacionado à escola, separações, perdas ou outras transições.",
+  "Necessidades de acompanhamento emocional em diferentes fases do desenvolvimento.",
+];
+
+const steps = [
+  {
+    number: "1",
+    title: "Primeiro contato",
+    text: "O responsável entra em contato pelo WhatsApp, apresenta brevemente a necessidade e consulta a disponibilidade de horários.",
+  },
+  {
+    number: "2",
+    title: "Compreensão inicial",
+    text: "O início do acompanhamento é organizado de acordo com a idade, o contexto e a demanda da criança, incluindo a escuta dos responsáveis quando indicado.",
+  },
+  {
+    number: "3",
+    title: "Atendimento da criança",
+    text: "Os encontros são conduzidos de forma adequada à faixa etária e às necessidades individuais, com recursos compatíveis com o processo terapêutico.",
+  },
+  {
+    number: "4",
+    title: "Acompanhamento da família",
+    text: "Os responsáveis podem ser chamados para orientações e alinhamentos ao longo do processo, preservando o espaço terapêutico e a privacidade da criança.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Como saber se é o momento de procurar psicoterapia para meu filho?",
+    answer:
+      "A procura pode acontecer quando mudanças emocionais, comportamentais, familiares, escolares ou de relacionamento começam a gerar sofrimento, preocupação ou dificuldades no dia a dia. O primeiro contato ajuda a compreender a situação e avaliar os próximos passos.",
+  },
+  {
+    question: "Os responsáveis participam das sessões?",
+    answer:
+      "A participação dos responsáveis é organizada conforme a idade, a demanda e as necessidades do acompanhamento. Eles podem participar de momentos específicos de escuta, orientação e alinhamento, sem que isso signifique estar presente em todas as sessões da criança.",
+  },
+  {
+    question: "É necessária autorização de um responsável?",
+    answer:
+      "Sim. Para o atendimento psicológico não eventual de crianças, é necessária a autorização de ao menos um responsável legal, observadas as condições aplicáveis ao caso.",
+  },
+  {
+    question: "Como funciona o sigilo no atendimento infantil?",
+    answer:
+      "O atendimento preserva a privacidade da criança e segue os cuidados éticos da Psicologia. Aos responsáveis são comunicadas as informações necessárias para favorecer o cuidado e as medidas em benefício da criança, respeitando os limites do sigilo profissional.",
+  },
+  {
+    question: "Existe uma idade mínima para iniciar?",
+    answer:
+      "A adequação do atendimento é avaliada caso a caso, considerando a fase do desenvolvimento, a demanda apresentada e os recursos apropriados para aquela criança. A família pode apresentar a situação no primeiro contato para receber orientação inicial.",
+  },
+  {
+    question: "A escola ou outros profissionais podem participar do processo?",
+    answer:
+      "Quando houver necessidade de articulação com escola ou outros profissionais, essa possibilidade é avaliada de acordo com o caso e conduzida com os cuidados éticos e autorizações pertinentes.",
+  },
+  {
+    question: "Quanto tempo dura a psicoterapia infantil?",
+    answer:
+      "Não existe uma duração única. O tempo de acompanhamento depende da demanda, dos objetivos e do desenvolvimento do processo, sendo revisto ao longo do percurso com os responsáveis quando necessário.",
+  },
+];
+---
+
+<BaseLayout
+  title="Psicoterapia Infantil no Centro Metropolitano | Elus Psicologia"
+  description="Psicoterapia infantil com Jéssica Albuquerque Vasconcelos no Centro Metropolitano, próximo à Barra da Tijuca e Barra Olímpica, com orientação aos responsáveis quando indicada."
+  whatsappHref={psicoterapiaInfantilWhatsappLink}
+  whatsappService="psicoterapia_infantil"
+  whatsappLabel="Conversar sobre atendimento infantil"
+>
+  <main class="pt-16 sm:pt-20">
+    <section class="container-elus grid items-center gap-7 py-7 sm:gap-10 sm:py-12 lg:grid-cols-[1.03fr_0.97fr] lg:gap-12 lg:py-20">
+      <div>
+        <p class="mb-3 inline-flex rounded-full border border-[#e8ded6] bg-white px-3.5 py-2 text-[13px] font-medium text-[#338d83] sm:mb-5 sm:px-4 sm:text-sm">
+          Psicoterapia infantil • atendimento presencial
+        </p>
+
+        <h1 class="hero-title-mobile max-w-3xl font-normal text-[#174442] md:text-6xl md:leading-tight">
+          Psicoterapia infantil com acolhimento, escuta e participação da família<span class="text-[#f4b3e1]">.</span>
+        </h1>
+
+        <p class="mt-5 max-w-2xl text-[15px] leading-7 text-[#6f7774] sm:mt-7 sm:text-base sm:leading-8 md:text-lg">
+          Um acompanhamento psicológico pensado para a infância, respeitando a fase do desenvolvimento, a singularidade de cada criança e o contexto familiar. Atendimento com {site.professionalName}, Psicóloga, {site.crp}, no Centro Metropolitano.
+        </p>
+
+        <div class="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
+          <a
+            data-primary-whatsapp-cta
+            data-whatsapp-cta
+            data-cta-location="hero"
+            data-service="psicoterapia_infantil"
+            href={psicoterapiaInfantilWhatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-full bg-[#338d83] px-7 py-4 text-center text-sm font-semibold text-white shadow-lg shadow-[#338d83]/20 transition hover:bg-[#185c58]"
+          >
+            Conversar sobre atendimento infantil
+          </a>
+          <a href="#como-funciona" class="rounded-full border border-[#338d83]/50 bg-white px-7 py-4 text-center text-sm font-semibold text-[#338d83] transition hover:bg-[#f3eeea]">
+            Como funciona
+          </a>
+        </div>
+
+        <p class="mt-4 max-w-xl text-xs leading-5 text-[#6f7774] sm:mt-5 sm:text-sm sm:leading-6">
+          O primeiro contato pode ser feito pelo responsável para apresentar a situação, tirar dúvidas e entender como o acompanhamento pode ser organizado.
+        </p>
+
+        <div class="mt-5 flex flex-wrap gap-2 text-xs text-[#5d6865] sm:mt-6">
+          <span class="rounded-full border border-[#e8ded6] bg-white px-3 py-2">Crianças</span>
+          <span class="rounded-full border border-[#e8ded6] bg-white px-3 py-2">Orientação aos responsáveis</span>
+          <span class="rounded-full border border-[#e8ded6] bg-white px-3 py-2">Centro Metropolitano • Barra Olímpica</span>
+        </div>
+      </div>
+
+      <figure class="soft-shadow mt-2 overflow-hidden rounded-[1.75rem] bg-[#f3eeea] sm:rounded-[2.5rem] lg:mt-0">
+        <img
+          src="/images/elus/jessica/jessica-orientacao-parental.webp"
+          alt="Jéssica Albuquerque Vasconcelos no espaço infantil da ELUS Psicologia"
+          class="aspect-[4/5] w-full object-cover object-[center_20%] sm:aspect-[5/6] lg:min-h-[540px]"
+          width="960"
+          height="1200"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </figure>
+    </section>
+
+    <section class="mobile-section border-y border-[#e8ded6] bg-white py-20">
+      <div class="container-elus grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.20em] text-[#338d83] sm:text-sm sm:tracking-[0.22em]">Quando pode ajudar</p>
+          <h2 class="mt-3 text-4xl font-normal leading-tight text-[#174442] md:mt-4 md:text-5xl">Quando buscar psicoterapia infantil?</h2>
+          <div class="mt-4 h-1 w-16 rounded-full bg-[#f4b3e1] sm:mt-5"></div>
+          <p class="mt-6 max-w-xl text-sm leading-7 text-[#6f7774] sm:text-base sm:leading-8">
+            Nem sempre a criança consegue explicar em palavras o que está acontecendo. Mudanças no comportamento, nas emoções, nas relações ou na rotina podem ser sinais de que vale compreender melhor o momento vivido.
+          </p>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-2 sm:gap-4">
+          {supports.map((item) => (
+            <article class="flex items-start gap-3 rounded-[1.25rem] bg-[#fbf8f5] p-4 sm:block sm:rounded-[1.5rem] sm:p-6">
+              <span class="mt-0.5 text-xl text-[#338d83] sm:mt-0">♡</span>
+              <p class="text-sm leading-6 text-[#6f7774] sm:mt-3 sm:leading-7">{item}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="mobile-section bg-[#fbf8f5] py-20">
+      <div class="container-elus grid items-center gap-7 sm:gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:gap-14">
+        <figure class="soft-shadow overflow-hidden rounded-[1.75rem] bg-white sm:rounded-[2.5rem]">
+          <img
+            src="/images/elus/espaco/espaco-infantil.webp"
+            alt="Espaço infantil da ELUS Psicologia preparado para acolher crianças"
+            class="aspect-[4/3] w-full object-cover object-center sm:aspect-[5/4]"
+            width="1200"
+            height="900"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.20em] text-[#338d83] sm:text-sm sm:tracking-[0.22em]">Um espaço para a infância</p>
+          <h2 class="mt-3 text-4xl font-normal leading-tight text-[#174442] md:mt-4 md:text-5xl">Na infância, comunicar também pode acontecer de diferentes formas.</h2>
+          <p class="mt-5 text-[15px] leading-7 text-[#6f7774] sm:mt-7 sm:text-base sm:leading-8">
+            O atendimento infantil pode incluir recursos compatíveis com a idade e com a etapa do desenvolvimento, além da conversa. O consultório da ELUS conta com um ambiente preparado para acolher crianças com conforto, privacidade e possibilidades de expressão adequadas ao processo terapêutico.
+          </p>
+          <a href="/a-elus" class="mt-6 inline-flex text-sm font-semibold text-[#338d83] sm:mt-8">Conhecer o espaço da ELUS →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mobile-section bg-white py-20">
+      <div class="container-elus grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
+        <div class="rounded-[1.75rem] bg-[#338d83] p-7 text-white sm:rounded-[2rem] sm:p-10">
+          <p class="text-xs font-bold uppercase tracking-[0.20em] text-white/75 sm:text-sm sm:tracking-[0.22em]">Participação dos responsáveis</p>
+          <h2 class="mt-3 text-4xl font-normal leading-tight md:mt-4 md:text-5xl">A família também faz parte do processo.</h2>
+          <p class="mt-5 text-sm leading-7 text-white/85 sm:mt-7 sm:text-base sm:leading-8">
+            Compreender o contexto da criança e manter diálogo com seus responsáveis pode ser importante para o acompanhamento. Essa participação é organizada conforme a necessidade de cada caso, preservando a privacidade da criança e o espaço terapêutico.
+          </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+          <article class="card-border rounded-[1.5rem] bg-[#fbf8f5] p-5 sm:p-6">
+            <p class="font-semibold text-[#174442]">Compreender o contexto</p>
+            <p class="mt-2 text-sm leading-6 text-[#6f7774]">A história, a rotina e as relações ajudam a compreender a demanda apresentada.</p>
+          </article>
+          <article class="card-border rounded-[1.5rem] bg-[#fbf8f5] p-5 sm:p-6">
+            <p class="font-semibold text-[#174442]">Orientar quando necessário</p>
+            <p class="mt-2 text-sm leading-6 text-[#6f7774]">Os responsáveis podem receber orientações e participar de alinhamentos ao longo do processo.</p>
+          </article>
+          <article class="card-border rounded-[1.5rem] bg-[#fbf8f5] p-5 sm:p-6">
+            <p class="font-semibold text-[#174442]">Preservar o espaço da criança</p>
+            <p class="mt-2 text-sm leading-6 text-[#6f7774]">O acompanhamento respeita privacidade, sigilo profissional e os cuidados éticos próprios do atendimento infantil.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="mobile-section bg-[#fbf8f5] py-20">
+      <div class="container-elus">
+        <div class="mx-auto max-w-2xl text-center">
+          <p class="text-xs font-bold uppercase tracking-[0.20em] text-[#338d83] sm:text-sm sm:tracking-[0.22em]">Como funciona</p>
+          <h2 class="mt-3 text-4xl font-normal text-[#174442] md:mt-4 md:text-5xl">Do primeiro contato ao acompanhamento.</h2>
+          <div class="mx-auto mt-4 h-1 w-16 rounded-full bg-[#f4b3e1]"></div>
+        </div>
+
+        <div class="mt-9 grid gap-4 sm:mt-14 sm:gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {steps.map((step) => (
+            <article class="card-border rounded-[1.5rem] bg-white p-5 sm:rounded-[1.75rem] sm:p-7">
+              <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#338d83] text-sm font-bold text-white sm:h-10 sm:w-10">{step.number}</span>
+              <h3 class="mt-4 text-2xl font-normal text-[#174442] sm:mt-6">{step.title}</h3>
+              <p class="mt-3 text-sm leading-6 text-[#6f7774] sm:mt-4 sm:leading-7">{step.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="mobile-section bg-white py-20">
+      <div class="container-elus grid items-center gap-7 sm:gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+        <div class="soft-shadow order-2 overflow-hidden rounded-[1.75rem] bg-[#f3eeea] sm:rounded-[2rem] lg:order-1">
+          <img
+            src="/images/elus/jessica/jessica-avaliacao-infantil.webp"
+            alt="Jéssica Albuquerque Vasconcelos, psicóloga responsável pelo atendimento infantil na ELUS"
+            class="h-[380px] w-full object-cover object-[center_18%] sm:min-h-[520px] sm:object-[center_16%] lg:h-full"
+            width="960"
+            height="1200"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <p class="text-xs font-bold uppercase tracking-[0.20em] text-[#338d83] sm:text-sm sm:tracking-[0.22em]">Profissional responsável</p>
+          <h2 class="mt-3 text-4xl font-normal leading-tight text-[#174442] md:mt-4 md:text-5xl">Cuidado infantil conduzido com técnica e sensibilidade.</h2>
+          <p class="mt-5 text-[15px] leading-7 text-[#6f7774] sm:mt-7 sm:text-base sm:leading-8">
+            {site.professionalName} é psicóloga clínica e neuropsicóloga. Sua atuação inclui atendimento de crianças, adolescentes e famílias, orientação parental e acompanhamento de pessoas neurodivergentes, com atenção às particularidades de cada etapa do desenvolvimento.
+          </p>
+          <p class="mt-3 text-sm font-medium text-[#338d83]">{site.crp}</p>
+          <div class="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
+            <a href="/sobre-jessica" class="rounded-full border border-[#338d83]/50 bg-white px-7 py-4 text-center text-sm font-semibold text-[#338d83] transition hover:bg-[#f3eeea]">Conhecer a trajetória da Jéssica</a>
+            <a data-whatsapp-cta data-cta-location="professional_section" data-service="psicoterapia_infantil" href={psicoterapiaInfantilWhatsappLink} target="_blank" rel="noopener noreferrer" class="rounded-full bg-[#338d83] px-7 py-4 text-center text-sm font-semibold text-white transition hover:bg-[#185c58]">Consultar disponibilidade</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mobile-section bg-[#fbf8f5] py-20">
+      <div class="container-elus">
+        <div class="mx-auto max-w-2xl text-center">
+          <p class="text-xs font-bold uppercase tracking-[0.20em] text-[#338d83] sm:text-sm sm:tracking-[0.22em]">Dúvidas frequentes</p>
+          <h2 class="mt-3 text-4xl font-normal text-[#174442] md:mt-4 md:text-5xl">Antes de iniciar.</h2>
+        </div>
+
+        <div class="mx-auto mt-8 grid max-w-5xl gap-3 sm:mt-12 sm:gap-4 md:grid-cols-2">
+          {faqs.map((faq) => (
+            <details class="rounded-[1.25rem] border border-[#e8ded6] bg-white p-5 shadow-sm">
+              <summary class="flex min-h-8 cursor-pointer list-none items-center justify-between gap-4 font-semibold text-[#174442]">
+                {faq.question}
+                <span class="text-xl font-normal text-[#338d83]" aria-hidden="true">+</span>
+              </summary>
+              <p class="mt-4 text-sm leading-7 text-[#6f7774]">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white pb-12 sm:pb-20">
+      <div class="container-elus">
+        <div class="relative overflow-hidden rounded-[1.75rem] bg-[#338d83] p-7 text-white sm:rounded-[2rem] sm:p-9 md:p-12">
+          <div class="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center md:gap-8">
+            <div>
+              <h2 class="text-4xl font-normal">Quer conversar sobre atendimento infantil?</h2>
+              <p class="mt-3 max-w-xl text-sm leading-6 text-white/85 sm:text-base sm:leading-7">Conte brevemente a necessidade da criança e consulte a disponibilidade para atendimento presencial.</p>
+            </div>
+            <a data-whatsapp-cta data-cta-location="final" data-service="psicoterapia_infantil" href={psicoterapiaInfantilWhatsappLink} target="_blank" rel="noopener noreferrer" class="w-full rounded-full bg-white px-7 py-4 text-center text-sm font-bold text-[#338d83] transition hover:bg-[#f3eeea] sm:w-auto">Conversar pelo WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
