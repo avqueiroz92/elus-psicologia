@@ -6,6 +6,7 @@ const measurementId = site.analyticsMeasurementId;
 
 <div
   id="analytics-consent"
+  data-measurement-id={measurementId}
   class="fixed inset-x-4 bottom-4 z-50 mx-auto hidden max-w-3xl flex-col rounded-3xl border border-[#e8ded6] bg-white p-5 shadow-2xl shadow-[#174442]/20 md:inset-x-8 md:flex-row md:items-center md:justify-between md:gap-6"
   role="dialog"
   aria-live="polite"
@@ -37,30 +38,57 @@ const measurementId = site.analyticsMeasurementId;
   </div>
 </div>
 
-<script define:vars={{ measurementId }}>
+<script>
   const CONSENT_KEY = "elus-analytics-consent";
+  const CAMPAIGN_KEY = "elus-campaign-attribution";
+  const CAMPAIGN_PARAMS = [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "utm_term",
+    "gclid",
+    "gbraid",
+    "wbraid",
+  ];
   const PRODUCTION_HOSTS = ["eluspsicologia.com.br", "www.eluspsicologia.com.br"];
 
   const consentBox = document.getElementById("analytics-consent");
   const acceptButton = document.getElementById("analytics-accept");
   const rejectButton = document.getElementById("analytics-reject");
+  const measurementId = consentBox?.dataset.measurementId || "";
+
+  const windowWithAnalytics = window;
+  windowWithAnalytics.dataLayer = windowWithAnalytics.dataLayer || [];
+  windowWithAnalytics.gtag =
+    windowWithAnalytics.gtag ||
+    function gtag() {
+      windowWithAnalytics.dataLayer.push(arguments);
+    };
 
   function hideConsentBox() {
     consentBox?.classList.add("hidden");
+    consentBox?.classList.remove("flex");
   }
 
   function showConsentBox() {
     consentBox?.classList.remove("hidden");
+    consentBox?.classList.add("flex");
   }
 
-  const CAMPAIGN_KEY = "elus-campaign-attribution";
-  const CAMPAIGN_PARAMS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "gbraid", "wbraid"];
+  function consentState(value) {
+    return {
+      analytics_storage: value,
+      ad_storage: value,
+      ad_user_data: value,
+      ad_personalization: value,
+    };
+  }
 
-  function captureCampaignAttribution() {
-    if (localStorage.getItem(CONSENT_KEY) !== "accepted") return;
-
+  function readCampaignParams() {
     const params = new URLSearchParams(window.location.search);
-    const current: Record<string, string> = {};
+    const current = {};
+
     CAMPAIGN_PARAMS.forEach((key) => {
       const value = params.get(key);
       if (value) current[key] = value.slice(0, 200);
@@ -69,11 +97,26 @@ const measurementId = site.analyticsMeasurementId;
     if (Object.keys(current).length) {
       current.landing_page = window.location.pathname;
       current.captured_at = new Date().toISOString();
+    }
+
+    return current;
+  }
+
+  function captureCampaignAttribution() {
+    if (localStorage.getItem(CONSENT_KEY) !== "accepted") return;
+
+    const current = readCampaignParams();
+    if (Object.keys(current).length) {
       sessionStorage.setItem(CAMPAIGN_KEY, JSON.stringify(current));
     }
   }
 
-  function getCampaignAttribution(): Record<string, string> {
+  function getCampaignAttribution() {
+    if (localStorage.getItem(CONSENT_KEY) !== "accepted") return {};
+
+    const current = readCampaignParams();
+    if (Object.keys(current).length) return current;
+
     try {
       return JSON.parse(sessionStorage.getItem(CAMPAIGN_KEY) || "{}");
     } catch {
@@ -81,7 +124,7 @@ const measurementId = site.analyticsMeasurementId;
     }
   }
 
-  function inferService(anchor: HTMLAnchorElement) {
+  function inferService(anchor) {
     const explicit = anchor.dataset.service;
     if (explicit) return explicit;
 
@@ -93,42 +136,40 @@ const measurementId = site.analyticsMeasurementId;
     return "general";
   }
 
-  function inferCtaLocation(anchor: HTMLAnchorElement) {
+  function inferCtaLocation(anchor) {
     if (anchor.dataset.ctaLocation) return anchor.dataset.ctaLocation;
     if (anchor.closest("header")) return "header";
     if (anchor.closest("footer")) return "footer";
     return "inline_unspecified";
   }
 
-  function loadAnalytics() {
+  function loadGoogleTag() {
     if (!PRODUCTION_HOSTS.includes(window.location.hostname)) return;
-    if (window.__elusAnalyticsLoaded) return;
+    if (!measurementId || windowWithAnalytics.__elusAnalyticsLoaded) return;
 
-    window.__elusAnalyticsLoaded = true;
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function gtag() {
-      window.dataLayer.push(arguments);
-    };
+    windowWithAnalytics.__elusAnalyticsLoaded = true;
 
     const analyticsScript = document.createElement("script");
     analyticsScript.async = true;
-    analyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    analyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
     document.head.appendChild(analyticsScript);
 
-    window.gtag("js", new Date());
-    window.gtag("config", measurementId, {
+    windowWithAnalytics.gtag("js", new Date());
+    windowWithAnalytics.gtag("config", measurementId, {
       send_page_view: true,
     });
-    captureCampaignAttribution();
   }
 
-  function trackContactEvent(eventName: string, anchor: HTMLAnchorElement) {
-    if (localStorage.getItem(CONSENT_KEY) !== "accepted") return;
-    if (typeof window.gtag !== "function") return;
+  function updateConsent(value) {
+    windowWithAnalytics.gtag("consent", "update", consentState(value));
+  }
+
+  function trackContactEvent(eventName, anchor) {
+    if (typeof windowWithAnalytics.gtag !== "function") return;
 
     const campaign = getCampaignAttribution();
 
-    window.gtag("event", eventName, {
+    windowWithAnalytics.gtag("event", eventName, {
       link_url: anchor.href,
       link_text: (anchor.textContent || anchor.getAttribute("aria-label") || "").trim().slice(0, 100),
       page_path: window.location.pathname,
@@ -137,6 +178,27 @@ const measurementId = site.analyticsMeasurementId;
       service: inferService(anchor),
       ...campaign,
     });
+  }
+
+  const savedConsent = localStorage.getItem(CONSENT_KEY);
+  const initialConsent = savedConsent === "accepted" ? "granted" : "denied";
+
+  // Consent Mode v2 avançado: o estado padrão é definido antes do Google tag.
+  // Sem consentimento, o Google tag pode enviar medições sem cookies e respeita
+  // analytics_storage/ad_storage/ad_user_data/ad_personalization como denied.
+  const defaultConsent = consentState(initialConsent);
+  if (!savedConsent) defaultConsent.wait_for_update = 500;
+  windowWithAnalytics.gtag("consent", "default", defaultConsent);
+
+  loadGoogleTag();
+
+  if (savedConsent === "accepted") {
+    captureCampaignAttribution();
+    hideConsentBox();
+  } else if (savedConsent === "rejected") {
+    hideConsentBox();
+  } else {
+    showConsentBox();
   }
 
   document.addEventListener("click", (event) => {
@@ -174,21 +236,15 @@ const measurementId = site.analyticsMeasurementId;
 
   acceptButton?.addEventListener("click", () => {
     localStorage.setItem(CONSENT_KEY, "accepted");
-    hideConsentBox();
-    loadAnalytics();
+    updateConsent("granted");
     captureCampaignAttribution();
+    hideConsentBox();
   });
 
   rejectButton?.addEventListener("click", () => {
     localStorage.setItem(CONSENT_KEY, "rejected");
     sessionStorage.removeItem(CAMPAIGN_KEY);
+    updateConsent("denied");
     hideConsentBox();
   });
-
-  const savedConsent = localStorage.getItem(CONSENT_KEY);
-  if (savedConsent === "accepted") {
-    loadAnalytics();
-  } else if (savedConsent !== "rejected") {
-    showConsentBox();
-  }
 </script>
