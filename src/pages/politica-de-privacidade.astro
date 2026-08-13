@@ -55,26 +55,37 @@ import { site } from "../config/site";
         </section>
 
         <section>
-          <h2 class="text-2xl font-normal text-[#174442]">4. Compartilhamento de dados</h2>
+          <h2 class="text-2xl font-normal text-[#174442]">4. Compartilhamento e fornecedores</h2>
           <p class="mt-3">
-            A Elus Psicologia não vende dados pessoais. Informações poderão ser
-            compartilhadas apenas quando necessário para cumprimento de obrigações
-            legais, regulatórias ou mediante autorização da pessoa interessada.
+            A Elus Psicologia não vende dados pessoais. Informações necessárias ao
+            funcionamento, segurança e mensuração do site podem ser processadas por
+            fornecedores de tecnologia, como o Google, de acordo com as configurações
+            de privacidade adotadas neste site e com os termos aplicáveis a esses serviços.
+            Informações também poderão ser tratadas quando necessário para cumprimento
+            de obrigações legais ou regulatórias.
           </p>
         </section>
 
         <section>
-          <h2 class="text-2xl font-normal text-[#174442]">5. Métricas e cookies</h2>
+          <h2 class="text-2xl font-normal text-[#174442]">5. Métricas, cookies e Consent Mode</h2>
           <p class="mt-3">
-            Com a sua autorização, o site utiliza o Google Analytics para coletar
-            métricas agregadas, como páginas visitadas, origem do acesso e cliques
-            em canais de contato. O recurso não deve receber conteúdo de mensagens,
-            informações clínicas ou dados inseridos em conversas com a ELUS.
+            O site utiliza a Google tag com o Consent Mode para mensuração de acesso e
+            desempenho das campanhas. Antes de uma escolha, o armazenamento para
+            Analytics e mensuração de publicidade permanece negado. Nesse estado, a tag
+            pode enviar sinais sem cookies para medição agregada e modelagem, sem ativar
+            cookies de Analytics ou publicidade.
           </p>
           <p class="mt-3">
-            O Google Analytics somente é ativado após a escolha “Aceitar métricas”.
-            A preferência é armazenada no próprio navegador. Caso a pessoa recuse,
-            o funcionamento essencial do site permanece disponível.
+            Ao escolher “Aceitar métricas”, o armazenamento para Google Analytics e
+            mensuração de campanhas é habilitado neste navegador. A personalização de
+            anúncios permanece desativada pela ELUS. Se a pessoa recusar, o armazenamento
+            continua negado e o funcionamento essencial do site permanece disponível.
+          </p>
+          <p class="mt-3">
+            Os eventos de contato enviados para mensuração identificam apenas o tipo de
+            destino, a página, o serviço relacionado e a posição do botão. O conteúdo da
+            mensagem do WhatsApp, informações clínicas e dados inseridos em conversas com
+            a ELUS não fazem parte desses eventos.
           </p>
         </section>
 
@@ -124,9 +135,35 @@ import { site } from "../config/site";
   </main>
 
   <script>
+    function clearElusGoogleCookies() {
+      const cookieNames = document.cookie
+        .split(";")
+        .map((cookie) => cookie.split("=")[0]?.trim())
+        .filter((name): name is string => Boolean(name) && (/^_ga/.test(name) || /^_gid$/.test(name) || /^_gat/.test(name) || /^_gcl/.test(name)));
+
+      const host = window.location.hostname;
+      const domains = ["", host, host === "eluspsicologia.com.br" || host === "www.eluspsicologia.com.br" ? ".eluspsicologia.com.br" : ""];
+
+      cookieNames.forEach((name) => {
+        domains.forEach((domain) => {
+          const domainPart = domain ? `; domain=${domain}` : "";
+          document.cookie = `${name}=; Max-Age=0; path=/${domainPart}; SameSite=Lax`;
+        });
+      });
+    }
+
     document.getElementById("reset-analytics-consent")?.addEventListener("click", () => {
       localStorage.removeItem("elus-analytics-consent");
-      sessionStorage.removeItem("elus-campaign-attribution");
+      clearElusGoogleCookies();
+
+      const analyticsWindow = window as Window & { gtag?: (...args: any[]) => void };
+      analyticsWindow.gtag?.("consent", "update", {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+      });
+
       window.location.reload();
     });
   </script>

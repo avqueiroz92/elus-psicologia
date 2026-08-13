@@ -20,6 +20,8 @@ const whatsappService = Astro.props.whatsappService ?? "general";
 const whatsappLabel = Astro.props.whatsappLabel ?? "Falar no WhatsApp";
 const canonicalURL = new URL(Astro.url.pathname, site.url);
 const logoURL = new URL("/images/elus/brand/logo-elus-transparent.png", site.url);
+const googleTagURL = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(site.analyticsMeasurementId)}`;
+const isProduction = import.meta.env.PROD;
 const phoneDigits = String(site.phone).replace(/\D/g, "");
 const internationalPhone = phoneDigits.startsWith("55") ? `+${phoneDigits}` : `+55${phoneDigits}`;
 
@@ -75,6 +77,45 @@ const structuredData = {
     <meta property="og:locale" content="pt_BR" />
 
     <meta name="theme-color" content="#fbf8f5" />
+
+    {isProduction && (
+      <>
+        <!-- ELUS Measurement: Consent Mode v2 starts before the Google tag. -->
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = window.gtag || function gtag(){ dataLayer.push(arguments); };
+
+          (function initializeElusConsent(){
+            var savedConsent = null;
+            try {
+              savedConsent = localStorage.getItem("elus-analytics-consent");
+            } catch (_) {
+              savedConsent = null;
+            }
+
+            var measurementConsent = savedConsent === "accepted" ? "granted" : "denied";
+            var consentDefaults = {
+              analytics_storage: measurementConsent,
+              ad_storage: measurementConsent,
+              ad_user_data: measurementConsent,
+              ad_personalization: "denied"
+            };
+
+            if (!savedConsent) consentDefaults.wait_for_update = 500;
+            window.gtag("consent", "default", consentDefaults);
+          })();
+        </script>
+        <script is:inline async src={googleTagURL}></script>
+        <script is:inline define:vars={{ measurementId: site.analyticsMeasurementId }}>
+          window.gtag("js", new Date());
+          window.gtag("config", measurementId, {
+            send_page_view: true,
+            allow_ad_personalization_signals: false,
+            allow_google_signals: false
+          });
+        </script>
+      </>
+    )}
 
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
