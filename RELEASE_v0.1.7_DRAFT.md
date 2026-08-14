@@ -16,8 +16,8 @@ Versão técnica focada em SEO local, clareza de entidades e correção de atrib
 ### Home / SEO local
 - `title` da Home passa a priorizar a intenção “Psicóloga na Barra Olímpica”.
 - `description` reforça Centro Metropolitano, Barra Olímpica, Barra da Tijuca e Jacarepaguá.
-- H1 da Home passa a comunicar diretamente Psicoterapia e Avaliação Neuropsicológica na Barra Olímpica.
-- A assinatura “Cuidado psicológico com escuta, ética e clareza” é preservada no texto de apoio.
+- H1 homologado “Cuidado psicológico com escuta, ética e clareza” permanece inalterado para evitar regressão visual/CRO sem preview.
+- O texto visível já mantém Psicoterapia, Avaliação Neuropsicológica, Centro Metropolitano e atendimento online no primeiro viewport.
 - Estrutura do hero, CTAs, fotografia e classes responsivas permanecem inalteradas.
 
 ### Atendimento Online
@@ -33,7 +33,7 @@ Versão técnica focada em SEO local, clareza de entidades e correção de atrib
 ## Itens ainda pendentes antes do merge
 
 - Executar `npm run build` em ambiente com Node >= 22.12.
-- Validar Home em desktop e mobile, principalmente altura do novo H1 no primeiro viewport.
+- Validar Home em desktop e mobile.
 - Validar os links de WhatsApp e `service=atendimento_online` em todos os CTAs da página online.
 - Validar o JSON-LD no Schema Markup Validator e no Rich Results Test quando aplicável.
 - Revisar diff final contra `main` usando o Regression Gate.
@@ -45,6 +45,6 @@ Versão técnica focada em SEO local, clareza de entidades e correção de atrib
 - Mudança de URLs.
 - Blog/hub de conteúdo.
 - Alteração da landing de Psicoterapia Infantil.
-- Alteração do H1 da Avaliação Neuropsicológica.
+- Alteração dos H1s homologados das landing pages.
 - Alteração de fotografias ou recortes.
 - Alteração do Consent Mode v2 ou da política de privacidade.
