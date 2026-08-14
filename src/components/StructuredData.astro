@@ -19,27 +19,43 @@ const phoneDigits = String(site.phone).replace(/\D/g, "");
 const internationalPhone = phoneDigits.startsWith("55") ? `+${phoneDigits}` : `+55${phoneDigits}`;
 const normalizedPath = canonicalURL.pathname.replace(/\/+$/, "") || "/";
 
-const servicesByPath: Record<string, { name: string; description: string }> = {
+const servicesByPath: Record<string, { name: string; description: string; local: boolean }> = {
   "/psicoterapia": {
     name: "Psicoterapia",
     description: "Psicoterapia para crianças, adolescentes e adultos, presencial no Centro Metropolitano, na Barra Olímpica, e também online.",
+    local: true,
   },
   "/psicoterapia-infantil": {
     name: "Psicoterapia Infantil",
     description: "Psicoterapia infantil presencial na ELUS Psicologia, com participação dos responsáveis quando indicada.",
+    local: true,
   },
   "/avaliacao-neuropsicologica": {
     name: "Avaliação Neuropsicológica",
     description: "Avaliação neuropsicológica para crianças, adolescentes e adultos, com entrevista, instrumentos adequados, análise integrada e devolutiva.",
+    local: true,
   },
   "/atendimento-online": {
     name: "Psicoterapia Online",
     description: "Psicoterapia online por videochamada, com ética, sigilo e avaliação da adequação da modalidade para cada caso.",
+    local: false,
   },
 };
 
+const localAreas = [
+  { "@type": "Place", name: "Barra Olímpica" },
+  { "@type": "Place", name: "Jacarepaguá" },
+  { "@type": "Place", name: "Barra da Tijuca" },
+  { "@type": "City", name: "Rio de Janeiro" },
+];
+
 const currentService = servicesByPath[normalizedPath];
 const serviceId = currentService ? `${canonicalURL.href}#service` : null;
+const pageAboutId = currentService
+  ? serviceId
+  : normalizedPath === "/sobre-jessica"
+    ? personId
+    : businessId;
 
 const graph: Record<string, unknown>[] = [
   {
@@ -70,10 +86,7 @@ const graph: Record<string, unknown>[] = [
     },
     areaServed: [
       { "@type": "Place", name: "Centro Metropolitano" },
-      { "@type": "Place", name: "Barra Olímpica" },
-      { "@type": "Place", name: "Jacarepaguá" },
-      { "@type": "Place", name: "Barra da Tijuca" },
-      { "@type": "City", name: "Rio de Janeiro" },
+      ...localAreas,
     ],
     openingHoursSpecification: [
       {
@@ -122,25 +135,25 @@ const graph: Record<string, unknown>[] = [
     description,
     inLanguage: "pt-BR",
     isPartOf: { "@id": websiteId },
-    about: currentService ? { "@id": serviceId } : { "@id": businessId },
+    about: { "@id": pageAboutId },
   },
 ];
 
 if (currentService && serviceId) {
-  graph.push({
+  const serviceNode: Record<string, unknown> = {
     "@type": "Service",
     "@id": serviceId,
     name: currentService.name,
     description: currentService.description,
     url: canonicalURL.href,
     provider: { "@id": businessId },
-    areaServed: [
-      { "@type": "Place", name: "Barra Olímpica" },
-      { "@type": "Place", name: "Jacarepaguá" },
-      { "@type": "Place", name: "Barra da Tijuca" },
-      { "@type": "City", name: "Rio de Janeiro" },
-    ],
-  });
+  };
+
+  if (currentService.local) {
+    serviceNode.areaServed = localAreas;
+  }
+
+  graph.push(serviceNode);
 }
 
 const structuredData = {
