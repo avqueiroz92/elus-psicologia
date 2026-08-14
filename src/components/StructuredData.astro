@@ -1,0 +1,152 @@
+---
+import { site } from "../config/site";
+
+type Props = {
+  title: string;
+  description: string;
+  canonicalURL: URL;
+};
+
+const { title, description, canonicalURL } = Astro.props;
+const logoURL = new URL("/images/elus/brand/logo-elus-transparent.png", site.url).href;
+const businessImageURL = new URL("/images/elus/espaco/acolhimento-janela.webp", site.url).href;
+const professionalImageURL = new URL("/images/elus/jessica/jessica-sobre.webp", site.url).href;
+const businessId = `${site.url}/#business`;
+const websiteId = `${site.url}/#website`;
+const personId = `${site.url}/sobre-jessica/#person`;
+const webpageId = `${canonicalURL.href}#webpage`;
+const phoneDigits = String(site.phone).replace(/\D/g, "");
+const internationalPhone = phoneDigits.startsWith("55") ? `+${phoneDigits}` : `+55${phoneDigits}`;
+const normalizedPath = canonicalURL.pathname.replace(/\/+$/, "") || "/";
+
+const servicesByPath: Record<string, { name: string; description: string }> = {
+  "/psicoterapia": {
+    name: "Psicoterapia",
+    description: "Psicoterapia para crianças, adolescentes e adultos, presencial no Centro Metropolitano, na Barra Olímpica, e também online.",
+  },
+  "/psicoterapia-infantil": {
+    name: "Psicoterapia Infantil",
+    description: "Psicoterapia infantil presencial na ELUS Psicologia, com participação dos responsáveis quando indicada.",
+  },
+  "/avaliacao-neuropsicologica": {
+    name: "Avaliação Neuropsicológica",
+    description: "Avaliação neuropsicológica para crianças, adolescentes e adultos, com entrevista, instrumentos adequados, análise integrada e devolutiva.",
+  },
+  "/atendimento-online": {
+    name: "Psicoterapia Online",
+    description: "Psicoterapia online por videochamada, com ética, sigilo e avaliação da adequação da modalidade para cada caso.",
+  },
+};
+
+const currentService = servicesByPath[normalizedPath];
+const serviceId = currentService ? `${canonicalURL.href}#service` : null;
+
+const graph: Record<string, unknown>[] = [
+  {
+    "@type": "WebSite",
+    "@id": websiteId,
+    url: site.url,
+    name: site.name,
+    inLanguage: "pt-BR",
+    publisher: { "@id": businessId },
+  },
+  {
+    "@type": "LocalBusiness",
+    "@id": businessId,
+    name: site.name,
+    url: site.url,
+    logo: logoURL,
+    image: businessImageURL,
+    description: site.description,
+    email: site.email,
+    telephone: internationalPhone,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Avenida Ator José Wilker, 605",
+      addressLocality: "Rio de Janeiro",
+      addressRegion: "RJ",
+      postalCode: "22775-024",
+      addressCountry: "BR",
+    },
+    areaServed: [
+      { "@type": "Place", name: "Centro Metropolitano" },
+      { "@type": "Place", name: "Barra Olímpica" },
+      { "@type": "Place", name: "Jacarepaguá" },
+      { "@type": "Place", name: "Barra da Tijuca" },
+      { "@type": "City", name: "Rio de Janeiro" },
+    ],
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "18:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Saturday",
+        opens: "09:00",
+        closes: "13:00",
+      },
+    ],
+    employee: { "@id": personId },
+    sameAs: [site.instagram],
+  },
+  {
+    "@type": "Person",
+    "@id": personId,
+    name: site.professionalName,
+    url: `${site.url}/sobre-jessica/`,
+    image: professionalImageURL,
+    jobTitle: "Psicóloga clínica e neuropsicóloga",
+    identifier: {
+      "@type": "PropertyValue",
+      propertyID: "CRP",
+      value: "05/87372",
+    },
+    worksFor: { "@id": businessId },
+    knowsAbout: [
+      "Psicoterapia",
+      "Psicoterapia Infantil",
+      "Neuropsicologia",
+      "Avaliação Neuropsicológica",
+      "Orientação parental",
+      "Neurodivergência",
+    ],
+  },
+  {
+    "@type": "WebPage",
+    "@id": webpageId,
+    url: canonicalURL.href,
+    name: title,
+    description,
+    inLanguage: "pt-BR",
+    isPartOf: { "@id": websiteId },
+    about: currentService ? { "@id": serviceId } : { "@id": businessId },
+  },
+];
+
+if (currentService && serviceId) {
+  graph.push({
+    "@type": "Service",
+    "@id": serviceId,
+    name: currentService.name,
+    description: currentService.description,
+    url: canonicalURL.href,
+    provider: { "@id": businessId },
+    areaServed: [
+      { "@type": "Place", name: "Barra Olímpica" },
+      { "@type": "Place", name: "Jacarepaguá" },
+      { "@type": "Place", name: "Barra da Tijuca" },
+      { "@type": "City", name: "Rio de Janeiro" },
+    ],
+  });
+}
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": graph,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
