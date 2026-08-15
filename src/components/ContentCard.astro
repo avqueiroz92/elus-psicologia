@@ -1,0 +1,30 @@
+---
+import type { ContentItem } from "../config/content";
+
+type Props = {
+  item: ContentItem;
+};
+
+const { item } = Astro.props;
+---
+
+<article class="card-border soft-shadow flex h-full flex-col rounded-[1.75rem] bg-white p-7 sm:p-8">
+  <div>
+    <p class="text-xs font-bold uppercase tracking-[0.18em] text-[#338d83]">{item.category}</p>
+    <h2 class="mt-4 text-2xl font-normal leading-snug text-[#174442]">
+      <a href={`/conteudos/${item.slug}/`} class="transition hover:text-[#338d83]">
+        {item.title}
+      </a>
+    </h2>
+    <p class="mt-4 text-sm leading-7 text-[#6f7774]">{item.description}</p>
+  </div>
+
+  <div class="mt-auto pt-7">
+    <div class="flex items-center justify-between gap-4 border-t border-[#eee5de] pt-5 text-xs text-[#7a8582]">
+      <span>{item.readTime}</span>
+      <a href={`/conteudos/${item.slug}/`} class="font-semibold text-[#338d83] transition hover:text-[#185c58]">
+        Ler conteúdo →
+      </a>
+    </div>
+  </div>
+</article>
