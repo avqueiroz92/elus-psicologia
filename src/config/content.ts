@@ -6,6 +6,7 @@ export type ContentItem = {
   readTime: string;
   serviceHref: string;
   serviceLabel: string;
+  reviewedAt: string;
 };
 
 export const contentItems: ContentItem[] = [
@@ -18,6 +19,7 @@ export const contentItems: ContentItem[] = [
     readTime: "6 min de leitura",
     serviceHref: "/avaliacao-neuropsicologica/",
     serviceLabel: "Conhecer a Avaliação Neuropsicológica",
+    reviewedAt: "15/08/2026",
   },
   {
     slug: "como-funciona-avaliacao-neuropsicologica",
@@ -28,16 +30,18 @@ export const contentItems: ContentItem[] = [
     readTime: "7 min de leitura",
     serviceHref: "/avaliacao-neuropsicologica/",
     serviceLabel: "Entender o serviço de avaliação",
+    reviewedAt: "15/08/2026",
   },
   {
     slug: "psicoterapia-infantil-quando-procurar",
     title: "Psicoterapia infantil: quando procurar apoio psicológico para a criança",
     description:
-      "Um guia para responsáveis observarem mudanças persistentes no comportamento, nas emoções e na rotina e entenderem quando vale conversar com um profissional.",
+      "Um guia para responsáveis observarem mudanças persistentes no comportamento, nas emoções, na rotina e entenderem quando vale conversar com um profissional.",
     category: "Psicoterapia infantil",
     readTime: "6 min de leitura",
     serviceHref: "/psicoterapia-infantil/",
     serviceLabel: "Conhecer a Psicoterapia Infantil",
+    reviewedAt: "15/08/2026",
   },
 ];
 
