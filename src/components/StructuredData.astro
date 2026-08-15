@@ -182,9 +182,11 @@ if (contentItem && articleId) {
     url: canonicalURL.href,
     inLanguage: "pt-BR",
     mainEntityOfPage: { "@id": webpageId },
-    author: { "@id": personId },
+    author: { "@id": businessId },
+    reviewedBy: { "@id": personId },
+    dateModified: contentItem.reviewedAt,
     publisher: { "@id": businessId },
-    image: professionalImageURL,
+    image: businessImageURL,
     about: contentItem.category,
   });
 
