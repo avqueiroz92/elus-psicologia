@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { atendimentoOnlineWhatsappLink } from "../config/site";
+import { site, atendimentoOnlineWhatsappLink } from "../config/site";
 
 const essentials = [
   {
@@ -46,7 +46,7 @@ const faqs = [
 
 <BaseLayout
   title="Psicoterapia Online | Elus Psicologia"
-  description="Psicoterapia online com acolhimento, ética, sigilo e avaliação da adequação para cada caso. Atendimento com Jéssica Albuquerque Vasconcelos, CRP 05/87372."
+  description={`Psicoterapia online por videochamada com ${site.professionalName}, Psicóloga, ${site.crp}.`}
   whatsappHref={atendimentoOnlineWhatsappLink}
   whatsappService="atendimento_online"
   whatsappLabel="Consultar horários online"
@@ -54,9 +54,11 @@ const faqs = [
   <main class="pt-20">
     <section class="container-elus grid items-center gap-12 py-16 md:grid-cols-[1fr_1fr] md:py-24">
       <div>
-        <p class="mb-5 inline-flex rounded-full border border-[#e8ded6] bg-white px-4 py-2 text-sm font-medium text-[#338d83]">Atendimento psicológico online</p>
-        <h1 class="max-w-3xl text-5xl font-normal leading-tight tracking-tight text-[#174442] md:text-6xl">Cuidado psicológico onde você estiver<span class="text-[#f4b3e1]">.</span></h1>
-        <p class="mt-8 max-w-2xl text-base leading-8 text-[#6f7774] md:text-lg">A modalidade online amplia o acesso à psicoterapia e permite que o acompanhamento aconteça por videochamada, com acolhimento, sigilo e responsabilidade técnica.</p>
+        <p class="mb-5 inline-flex rounded-full border border-[#e8ded6] bg-white px-4 py-2 text-sm font-medium text-[#338d83]">Psicoterapia online</p>
+        <h1 class="max-w-3xl text-5xl font-normal leading-tight tracking-tight text-[#174442] md:text-6xl">Psicoterapia por videochamada<span class="text-[#f4b3e1]">.</span></h1>
+        <p class="mt-8 max-w-2xl text-base leading-8 text-[#6f7774] md:text-lg">
+          Uma opção para quem prefere fazer as sessões de casa, mora longe do consultório ou precisa de mais flexibilidade na rotina. O atendimento é realizado por {site.professionalName}, Psicóloga, {site.crp}.
+        </p>
         <div class="mt-9 flex flex-col gap-4 sm:flex-row">
           <a data-whatsapp-cta data-cta-location="hero" data-service="atendimento_online" href={atendimentoOnlineWhatsappLink} target="_blank" rel="noopener noreferrer" class="rounded-full bg-[#338d83] px-7 py-4 text-center text-sm font-semibold text-white shadow-lg shadow-[#338d83]/20 transition hover:bg-[#185c58]">Consultar horários</a>
           <a href="#como-funciona" class="rounded-full border border-[#338d83]/50 bg-white px-7 py-4 text-center text-sm font-semibold text-[#338d83] transition hover:bg-[#f3eeea]">Como funciona</a>
@@ -70,20 +72,14 @@ const faqs = [
           <div class="flex items-center justify-between border-b border-[#e8ded6] pb-4">
             <div class="flex items-center gap-3">
               <img src="/images/elus/brand/logo-elus-transparent.png" alt="" class="h-9 w-auto max-w-[64px] object-contain" width="600" height="316" aria-hidden="true" />
-              <div>
-                <p class="text-sm font-semibold text-[#174442]">ELUS Psicologia</p>
-                <p class="text-xs text-[#6f7774]">Atendimento online</p>
-              </div>
+              <div><p class="text-sm font-semibold text-[#174442]">ELUS Psicologia</p><p class="text-xs text-[#6f7774]">Atendimento online</p></div>
             </div>
             <span class="h-3 w-3 rounded-full bg-[#338d83]"></span>
           </div>
           <div class="mt-6 flex min-h-52 items-center justify-center rounded-[1.5rem] bg-[#d7ebe8]">
-            <svg class="h-20 w-20 text-[#338d83]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <rect x="3" y="6" width="13" height="12" rx="3"></rect>
-              <path d="m16 10 5-3v10l-5-3"></path>
-            </svg>
+            <svg class="h-20 w-20 text-[#338d83]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="3"></rect><path d="m16 10 5-3v10l-5-3"></path></svg>
           </div>
-          <p class="mt-5 text-center text-sm leading-6 text-[#6f7774]">Um encontro reservado, conduzido por videochamada com ética e sigilo.</p>
+          <p class="mt-5 text-center text-sm leading-6 text-[#6f7774]">A sessão acontece por videochamada, em horário previamente combinado.</p>
         </div>
       </div>
     </section>
@@ -91,26 +87,17 @@ const faqs = [
     <section class="border-y border-[#e8ded6] bg-white py-20">
       <div class="container-elus grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">Para quem é</p>
-          <h2 class="mt-4 text-4xl font-normal leading-tight text-[#174442] md:text-5xl">Flexibilidade sem perder o cuidado.</h2>
+          <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">Para quem pode fazer sentido</p>
+          <h2 class="mt-4 text-4xl font-normal leading-tight text-[#174442] md:text-5xl">Quando o online ajuda na rotina.</h2>
           <div class="mt-5 h-1 w-16 rounded-full bg-[#f4b3e1]"></div>
-          <p class="mt-7 text-base leading-8 text-[#6f7774]">O atendimento online pode ser uma alternativa para pessoas que preferem realizar a psicoterapia de casa, possuem rotina de deslocamento intensa, moram longe da clínica ou precisam de maior flexibilidade.</p>
-          <p class="mt-4 text-base leading-8 text-[#6f7774]">A indicação da modalidade é avaliada de acordo com a demanda, a idade e as condições necessárias para um acompanhamento seguro e adequado.</p>
+          <p class="mt-7 text-base leading-8 text-[#6f7774]">A modalidade online pode ser útil para quem mora longe do consultório, tem dificuldade de deslocamento ou prefere realizar as sessões de casa.</p>
+          <p class="mt-4 text-base leading-8 text-[#6f7774]">Na conversa inicial, Jéssica avalia se o atendimento online é adequado para a necessidade apresentada.</p>
         </div>
 
         <div class="grid gap-5">
-          <article class="rounded-[1.5rem] bg-[#fbf8f5] p-7">
-            <h3 class="text-xl font-semibold text-[#174442]">Acolhimento e escuta</h3>
-            <p class="mt-3 text-sm leading-7 text-[#6f7774]">A distância física não elimina a presença, o vínculo e a escuta cuidadosa durante o processo.</p>
-          </article>
-          <article class="rounded-[1.5rem] bg-[#fbf8f5] p-7">
-            <h3 class="text-xl font-semibold text-[#174442]">Ética e sigilo</h3>
-            <p class="mt-3 text-sm leading-7 text-[#6f7774]">O atendimento segue as normas profissionais aplicáveis, com cuidado na escolha dos recursos utilizados.</p>
-          </article>
-          <article class="rounded-[1.5rem] bg-[#fbf8f5] p-7">
-            <h3 class="text-xl font-semibold text-[#174442]">Adequação individual</h3>
-            <p class="mt-3 text-sm leading-7 text-[#6f7774]">Cada caso é avaliado para verificar se a modalidade online é apropriada para a necessidade apresentada.</p>
-          </article>
+          <article class="rounded-[1.5rem] bg-[#fbf8f5] p-7"><h3 class="text-xl font-semibold text-[#174442]">Sessão por videochamada</h3><p class="mt-3 text-sm leading-7 text-[#6f7774]">O encontro acontece em horário agendado, usando um dispositivo com câmera e conexão de internet.</p></article>
+          <article class="rounded-[1.5rem] bg-[#fbf8f5] p-7"><h3 class="text-xl font-semibold text-[#174442]">Privacidade</h3><p class="mt-3 text-sm leading-7 text-[#6f7774]">É importante escolher um local reservado, onde seja possível conversar sem interrupções.</p></article>
+          <article class="rounded-[1.5rem] bg-[#fbf8f5] p-7"><h3 class="text-xl font-semibold text-[#174442]">Avaliação caso a caso</h3><p class="mt-3 text-sm leading-7 text-[#6f7774]">Nem toda situação precisa ser conduzida online. A modalidade é definida de acordo com cada atendimento.</p></article>
         </div>
       </div>
     </section>
@@ -119,10 +106,9 @@ const faqs = [
       <div class="container-elus">
         <div class="mx-auto max-w-2xl text-center">
           <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">Como se preparar</p>
-          <h2 class="mt-4 text-4xl font-normal text-[#174442] md:text-5xl">Um encontro simples e reservado.</h2>
+          <h2 class="mt-4 text-4xl font-normal text-[#174442] md:text-5xl">O que você precisa para a sessão.</h2>
           <div class="mx-auto mt-4 h-1 w-16 rounded-full bg-[#f4b3e1]"></div>
         </div>
-
         <div class="mt-14 grid gap-6 md:grid-cols-3">
           {essentials.map((item) => (
             <article class="card-border rounded-[1.75rem] bg-white p-8 text-center shadow-sm">
@@ -137,16 +123,10 @@ const faqs = [
 
     <section class="bg-white py-20">
       <div class="container-elus">
-        <div class="mx-auto max-w-2xl text-center">
-          <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">Dúvidas frequentes</p>
-          <h2 class="mt-4 text-4xl font-normal text-[#174442] md:text-5xl">Sobre o atendimento online.</h2>
-        </div>
+        <div class="mx-auto max-w-2xl text-center"><p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">Dúvidas frequentes</p><h2 class="mt-4 text-4xl font-normal text-[#174442] md:text-5xl">Sobre o atendimento online.</h2></div>
         <div class="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-2">
           {faqs.map((faq) => (
-            <details class="rounded-[1.25rem] border border-[#e8ded6] bg-white p-5 shadow-sm">
-              <summary class="cursor-pointer list-none font-semibold text-[#174442]">{faq.question}</summary>
-              <p class="mt-4 text-sm leading-7 text-[#6f7774]">{faq.answer}</p>
-            </details>
+            <details class="rounded-[1.25rem] border border-[#e8ded6] bg-white p-5 shadow-sm"><summary class="cursor-pointer list-none font-semibold text-[#174442]">{faq.question}</summary><p class="mt-4 text-sm leading-7 text-[#6f7774]">{faq.answer}</p></details>
           ))}
         </div>
       </div>
@@ -156,11 +136,8 @@ const faqs = [
       <div class="container-elus">
         <div class="relative overflow-hidden rounded-[2rem] bg-[#338d83] p-9 text-white md:p-12">
           <div class="relative flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
-            <div>
-              <h2 class="text-4xl font-normal">Quer saber se o atendimento online é adequado?</h2>
-              <p class="mt-3 max-w-xl text-white/85">Entre em contato para tirar dúvidas e consultar a disponibilidade de horários.</p>
-            </div>
-            <a data-whatsapp-cta data-cta-location="final" data-service="atendimento_online" href={atendimentoOnlineWhatsappLink} target="_blank" rel="noopener noreferrer" class="rounded-full bg-white px-7 py-4 text-sm font-bold text-[#338d83] transition hover:bg-[#f3eeea]">Falar com a ELUS</a>
+            <div><h2 class="text-4xl font-normal">Quer saber se o atendimento online faz sentido para você?</h2><p class="mt-3 max-w-xl text-white/85">Fale pelo WhatsApp para tirar dúvidas e consultar os horários disponíveis.</p></div>
+            <a data-whatsapp-cta data-cta-location="final" data-service="atendimento_online" href={atendimentoOnlineWhatsappLink} target="_blank" rel="noopener noreferrer" class="rounded-full bg-white px-7 py-4 text-sm font-bold text-[#338d83] transition hover:bg-[#f3eeea]">Falar pelo WhatsApp</a>
           </div>
         </div>
       </div>
