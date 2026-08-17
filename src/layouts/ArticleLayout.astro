@@ -37,14 +37,12 @@ const reviewDate = new Intl.DateTimeFormat("pt-BR", {
         </h1>
         <p class="mt-6 max-w-3xl text-lg leading-8 text-[#6f7774]">{description}</p>
 
-        <div class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[#6f7774]">
-          <span class="font-semibold text-[#174442]">Conteúdo editorial: ELUS Psicologia</span>
+        <div class="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-[#6f7774]">
+          <a href="/sobre-jessica/" class="font-semibold text-[#174442] transition hover:text-[#338d83]">{site.professionalName}</a>
           <span aria-hidden="true">•</span>
-          <span>{readTime}</span>
+          <span>Psicóloga · {site.crp}</span>
         </div>
-        <p class="mt-2 text-sm text-[#6f7774]">
-          Revisão técnica por <a href="/sobre-jessica/" class="font-semibold text-[#174442] transition hover:text-[#338d83]">Jéssica Albuquerque Vasconcelos</a> · Psicóloga · {site.crp} · {reviewDate}
-        </p>
+        <p class="mt-2 text-sm text-[#6f7774]">{readTime} · Revisado em {reviewDate}</p>
       </div>
     </section>
 
@@ -56,7 +54,7 @@ const reviewDate = new Intl.DateTimeFormat("pt-BR", {
 
         <aside class="lg:sticky lg:top-28 lg:self-start">
           <div class="rounded-[1.5rem] border border-[#e8ded6] bg-[#fbf8f5] p-6">
-            <p class="text-sm font-semibold text-[#174442]">Este conteúdo ajuda a entender o tema, mas não substitui uma avaliação individual.</p>
+            <p class="text-sm font-semibold text-[#174442]">Este conteúdo é informativo e não substitui uma avaliação individual.</p>
             <a
               href={serviceHref}
               class="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#338d83] px-5 py-3 text-center text-sm font-bold text-white transition hover:bg-[#185c58]"
@@ -70,19 +68,18 @@ const reviewDate = new Intl.DateTimeFormat("pt-BR", {
 
     <section class="border-t border-[#e8ded6] bg-[#fbf8f5] py-12">
       <div class="container-elus max-w-4xl">
-        <p class="text-sm font-bold uppercase tracking-[0.18em] text-[#338d83]">Revisão técnica</p>
-        <div class="mt-5 grid gap-6 sm:grid-cols-[120px_1fr] sm:items-center">
+        <div class="grid gap-6 sm:grid-cols-[120px_1fr] sm:items-center">
           <img
             src="/images/elus/jessica/jessica-sobre.webp"
-            alt="Jéssica Albuquerque Vasconcelos"
+            alt={site.professionalName}
             class="h-28 w-28 rounded-full object-cover object-[center_16%]"
             width="224"
             height="224"
             loading="lazy"
           />
           <div>
-            <h2 class="text-2xl font-normal text-[#174442]">Jéssica Albuquerque Vasconcelos</h2>
-            <p class="mt-2 text-sm leading-6 text-[#6f7774]">Psicóloga · {site.crp}. Revisão técnica realizada em {reviewDate}.</p>
+            <h2 class="text-2xl font-normal text-[#174442]">{site.professionalName}</h2>
+            <p class="mt-2 text-sm leading-6 text-[#6f7774]">Psicóloga · {site.crp}</p>
             <a href="/sobre-jessica/" class="mt-3 inline-block text-sm font-semibold text-[#338d83] transition hover:text-[#185c58]">Conhecer formação e trajetória →</a>
           </div>
         </div>
