@@ -1,5 +1,6 @@
 ---
 import { site } from "../config/site";
+import { contentBySlug } from "../config/content";
 
 type Props = {
   title: string;
@@ -51,11 +52,25 @@ const localAreas = [
 
 const currentService = servicesByPath[normalizedPath];
 const serviceId = currentService ? `${canonicalURL.href}#service` : null;
+const contentMatch = normalizedPath.match(/^\/conteudos\/([^/]+)$/);
+const contentItem = contentMatch ? contentBySlug[contentMatch[1]] : undefined;
+const isContentHub = normalizedPath === "/conteudos";
+const isProfilePage = normalizedPath === "/sobre-jessica";
+const articleId = contentItem ? `${canonicalURL.href}#article` : null;
+
 const pageAboutId = currentService
   ? serviceId
-  : normalizedPath === "/sobre-jessica"
+  : isProfilePage
     ? personId
-    : businessId;
+    : contentItem
+      ? personId
+      : businessId;
+
+const webPageTypes = isProfilePage
+  ? ["WebPage", "ProfilePage"]
+  : isContentHub
+    ? ["WebPage", "CollectionPage"]
+    : "WebPage";
 
 const graph: Record<string, unknown>[] = [
   {
@@ -128,7 +143,7 @@ const graph: Record<string, unknown>[] = [
     ],
   },
   {
-    "@type": "WebPage",
+    "@type": webPageTypes,
     "@id": webpageId,
     url: canonicalURL.href,
     name: title,
@@ -136,6 +151,8 @@ const graph: Record<string, unknown>[] = [
     inLanguage: "pt-BR",
     isPartOf: { "@id": websiteId },
     about: { "@id": pageAboutId },
+    ...(isProfilePage ? { mainEntity: { "@id": personId } } : {}),
+    ...(contentItem && articleId ? { mainEntity: { "@id": articleId } } : {}),
   },
 ];
 
@@ -154,6 +171,49 @@ if (currentService && serviceId) {
   }
 
   graph.push(serviceNode);
+}
+
+if (contentItem && articleId) {
+  graph.push({
+    "@type": "BlogPosting",
+    "@id": articleId,
+    headline: contentItem.title,
+    description: contentItem.description,
+    url: canonicalURL.href,
+    inLanguage: "pt-BR",
+    mainEntityOfPage: { "@id": webpageId },
+    author: { "@id": businessId },
+    reviewedBy: { "@id": personId },
+    dateModified: contentItem.reviewedAt,
+    publisher: { "@id": businessId },
+    image: businessImageURL,
+    about: contentItem.category,
+  });
+
+  graph.push({
+    "@type": "BreadcrumbList",
+    "@id": `${canonicalURL.href}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Início",
+        item: `${site.url}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Conteúdos",
+        item: `${site.url}/conteudos/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: contentItem.title,
+        item: canonicalURL.href,
+      },
+    ],
+  });
 }
 
 const structuredData = {
