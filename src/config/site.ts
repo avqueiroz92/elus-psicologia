@@ -2,11 +2,11 @@ export const site = {
   name: "Elus Psicologia",
   title: "Elus Psicologia | Psicoterapia e Avaliação Neuropsicológica",
   description:
-    "Psicoterapia, psicoterapia infantil, avaliação neuropsicológica e atendimento online com escuta acolhedora, ética e responsabilidade técnica.",
+    "Psicoterapia, psicoterapia infantil, avaliação neuropsicológica e atendimento online com Jéssica Albuquerque Vasconcelos.",
   url: "https://eluspsicologia.com.br",
   analyticsMeasurementId: "G-PJTE6G9DC6",
 
-  professionalName: "Jessica Albuquerque Vasconcelos",
+  professionalName: "Jéssica Albuquerque Vasconcelos",
   crp: "CRP 05/87372",
 
   phone: "5521967015814",
