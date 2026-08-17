@@ -2,21 +2,22 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ContentCard from "../../components/ContentCard.astro";
 import { contentItems } from "../../config/content";
+import { site } from "../../config/site";
 ---
 
 <BaseLayout
   title="Conteúdos sobre Psicologia e Neuropsicologia | ELUS Psicologia"
-  description="Conteúdos informativos da ELUS Psicologia sobre psicoterapia, psicoterapia infantil e avaliação neuropsicológica, com autoria profissional e referências técnicas."
+  description="Conteúdos sobre psicoterapia, psicoterapia infantil e avaliação neuropsicológica revisados por Jéssica Albuquerque Vasconcelos, Psicóloga, CRP 05/87372."
 >
   <main class="pt-16 sm:pt-20">
     <section class="border-b border-[#e8ded6] bg-[#fbf8f5] py-14 sm:py-20">
       <div class="container-elus max-w-4xl text-center">
-        <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">Conteúdos ELUS</p>
+        <p class="text-sm font-bold uppercase tracking-[0.22em] text-[#338d83]">Conteúdos</p>
         <h1 class="mt-4 text-4xl font-normal leading-tight tracking-tight text-[#174442] sm:text-5xl md:text-6xl">
-          Psicologia explicada com clareza e responsabilidade.
+          Informações para entender melhor antes de decidir os próximos passos.
         </h1>
         <p class="mx-auto mt-6 max-w-3xl text-lg leading-8 text-[#6f7774]">
-          Materiais para ajudar pacientes e responsáveis a compreenderem melhor temas ligados à psicoterapia e à avaliação neuropsicológica. Os conteúdos são informativos e não substituem avaliação individual.
+          Textos sobre psicoterapia, infância e avaliação neuropsicológica. O objetivo é explicar dúvidas frequentes de forma acessível, sem substituir uma avaliação individual.
         </p>
       </div>
     </section>
@@ -30,14 +31,27 @@ import { contentItems } from "../../config/content";
     </section>
 
     <section class="bg-[#fbf8f5] py-14">
-      <div class="container-elus max-w-4xl text-center">
-        <h2 class="text-3xl font-normal text-[#174442] sm:text-4xl">Quem escreve</h2>
-        <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#6f7774]">
-          Os conteúdos são preparados no contexto da ELUS Psicologia e revisados por Jéssica Albuquerque Vasconcelos, psicóloga clínica e neuropsicóloga, CRP 05/87372.
-        </p>
-        <a href="/sobre-jessica/" class="mt-6 inline-flex rounded-full border border-[#338d83]/50 bg-white px-6 py-3 text-sm font-semibold text-[#338d83] transition hover:bg-[#f3eeea]">
-          Conhecer Jéssica
-        </a>
+      <div class="container-elus max-w-4xl">
+        <div class="grid gap-6 sm:grid-cols-[120px_1fr] sm:items-center">
+          <img
+            src="/images/elus/jessica/jessica-sobre.webp"
+            alt={site.professionalName}
+            class="h-28 w-28 rounded-full object-cover object-[center_16%]"
+            width="224"
+            height="224"
+            loading="lazy"
+          />
+          <div>
+            <h2 class="text-3xl font-normal text-[#174442]">{site.professionalName}</h2>
+            <p class="mt-2 text-sm font-medium text-[#338d83]">Psicóloga · {site.crp}</p>
+            <p class="mt-4 max-w-2xl text-base leading-7 text-[#6f7774]">
+              Os conteúdos desta área passam pela revisão técnica da Jéssica antes da publicação.
+            </p>
+            <a href="/sobre-jessica/" class="mt-5 inline-flex text-sm font-semibold text-[#338d83] transition hover:text-[#185c58]">
+              Conhecer formação e trajetória →
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
