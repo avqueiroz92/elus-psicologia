@@ -2,7 +2,7 @@ export const site = {
   name: "Elus Psicologia",
   title: "Elus Psicologia | Psicoterapia e Avaliação Neuropsicológica",
   description:
-    "Psicoterapia com foco em mulheres, crianças e adolescentes e avaliação neuropsicológica para diferentes faixas etárias com Jéssica Albuquerque Vasconcelos.",
+    "Psicoterapia e avaliação neuropsicológica com foco em crianças, adolescentes e mulheres. Atendimentos presenciais na Barra Olímpica e psicoterapia online para todo o Brasil e para brasileiros no exterior.",
   url: "https://eluspsicologia.com.br",
   analyticsMeasurementId: "G-PJTE6G9DC6",
 
