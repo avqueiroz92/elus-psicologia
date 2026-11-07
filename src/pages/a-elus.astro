@@ -24,8 +24,8 @@ const spaces = [
   {
     title: "Espaço infantil",
     subtitle: "Um ambiente preparado para crianças.",
-    image: "/images/elus/espaco/espaco-infantil.webp",
-    alt: "Espaço infantil da ELUS Psicologia com mesa, brinquedos e decoração lúdica",
+    image: "/images/elus/espaco/espaco-infantil-arvore-finalizada.webp",
+    alt: "Sala infantil da ELUS Psicologia com árvore decorativa concluída, mural de floresta e brinquedos",
     description:
       "O espaço infantil conta com recursos compatíveis com o atendimento de crianças e diferentes formas de expressão durante o processo terapêutico.",
     href: "/psicoterapia-infantil",
@@ -71,7 +71,7 @@ const spaces = [
           {spaces.map((space) => (
             <article class="card-border soft-shadow overflow-hidden rounded-[2rem] bg-white">
               <div class="overflow-hidden bg-[#f3eeea]">
-                <img src={space.image} alt={space.alt} class="aspect-[4/3] w-full object-cover object-center" width="1200" height="900" loading="lazy" decoding="async" />
+                <img src={space.image} alt={space.alt} class={`aspect-[4/3] w-full object-cover ${space.title === "Espaço infantil" ? "object-[center_14%]" : "object-center"}`} width="1200" height="900" loading="lazy" decoding="async" />
               </div>
               <div class="p-7">
                 <p class="text-sm font-bold uppercase tracking-[0.18em] text-[#338d83]">{space.title}</p>
