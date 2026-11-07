@@ -15,7 +15,8 @@ export const site = {
   instagramUser: "@elus_psicologia",
 
   placeName: "Centro Metropolitano",
-  location: "Avenida Ator José Wilker, 605, Jacarepaguá, Rio de Janeiro - RJ, 22775-024",
+  location: "Avenida Antônio Gallotti, 605, sala 394, Barra Olímpica, Rio de Janeiro - RJ, 22775-029",
+  mapsLocation: "Avenida Antônio Gallotti, 605, Barra Olímpica, Rio de Janeiro - RJ, 22775-029",
   locationContext:
     "Localização próxima à Barra da Tijuca, Barra Olímpica e aos bairros da região.",
   whatsappMessage:
