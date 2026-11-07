@@ -41,12 +41,17 @@ const faqs = [
     answer:
       "A possibilidade pode ser conversada conforme a necessidade, disponibilidade e adequação do acompanhamento.",
   },
+  {
+    question: "A ELUS atende brasileiros que vivem no exterior?",
+    answer:
+      "Sim. Jéssica realiza os atendimentos a partir do Brasil. A possibilidade de psicoterapia online para quem vive no exterior é avaliada individualmente e requer contrato que estabeleça a aplicação da legislação brasileira à prestação do serviço.",
+  },
 ];
 ---
 
 <BaseLayout
   title="Psicoterapia Online | Elus Psicologia"
-  description={`Psicoterapia online com foco em mulheres e adolescentes, por videochamada com ${site.professionalName}, Psicóloga, ${site.crp}.`}
+  description={`Psicoterapia online com foco em mulheres e adolescentes, em todo o Brasil e para brasileiros no exterior, com ${site.professionalName}, ${site.crp}.`}
   whatsappHref={atendimentoOnlineWhatsappLink}
   whatsappService="atendimento_online"
   whatsappLabel="Consultar horários online"
@@ -57,7 +62,7 @@ const faqs = [
         <p class="mb-5 inline-flex rounded-full border border-[#e8ded6] bg-white px-4 py-2 text-sm font-medium text-[#338d83]">Psicoterapia online</p>
         <h1 class="max-w-3xl text-5xl font-normal leading-tight tracking-tight text-[#174442] md:text-6xl">Psicoterapia por videochamada<span class="text-[#f4b3e1]">.</span></h1>
         <p class="mt-8 max-w-2xl text-base leading-8 text-[#6f7774] md:text-lg">
-          Psicoterapia por videochamada com foco em mulheres e adolescentes, para quem prefere realizar as sessões de casa ou precisa de flexibilidade na rotina. O atendimento é realizado por {site.professionalName}, Psicóloga, {site.crp}, com avaliação da adequação da modalidade a cada caso.
+          Psicoterapia por videochamada com foco em mulheres e adolescentes, disponível para pessoas em todo o Brasil e brasileiros que vivem no exterior. O atendimento é realizado por {site.professionalName}, Psicóloga, {site.crp}, conforme a adequação da modalidade a cada caso.
         </p>
         <div class="mt-9 flex flex-col gap-4 sm:flex-row">
           <a data-whatsapp-cta data-cta-location="hero" data-service="atendimento_online" href={atendimentoOnlineWhatsappLink} target="_blank" rel="noopener noreferrer" class="rounded-full bg-[#338d83] px-7 py-4 text-center text-sm font-semibold text-white shadow-lg shadow-[#338d83]/20 transition hover:bg-[#185c58]">Consultar horários</a>
