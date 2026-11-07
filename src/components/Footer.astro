@@ -14,7 +14,7 @@ const nationalPhone = phoneDigits.startsWith("55") ? phoneDigits.slice(2) : phon
 const phoneDisplay = nationalPhone.length === 11
   ? `(${nationalPhone.slice(0, 2)}) ${nationalPhone.slice(2, 7)}-${nationalPhone.slice(7)}`
   : String(site.phone);
-const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.location)}`;
+const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapsLocation)}`;
 ---
 
 <footer class="border-t border-[#e8ded6] bg-[#fbf8f5] py-12">
